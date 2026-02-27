@@ -1,0 +1,581 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+
+export function getStaticPaths() {
+    const products = [
+        {
+            id: "2-1-pack-microdosis",
+            title: "2+1 Pack de microdosis de trufas mágicas- MINI CULTIVO EXPERIMENTAL",
+            price: "27,98 €",
+            category: "MICRODOSIS",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
+            description: [
+                "MINI CULTIVO EXPERIMENTAL",
+                "-Si quieres experimentar un cultivo único, apúntate a la nueva tendencia",
+                "-Para sitios reducidos hemos creado un mini cultivo muy parecido al cultivo de las trufas clásicas",
+                "-Puedes experimentar con un pack de 6 raciones que se distribuyen en 6 mini macetas individuales con tierra. Se sigue la misma manera de cultivo como con otros tipas de trufas mencionadas.",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+            ],
+        },
+        {
+            id: "3-1-pack-microdosis",
+            title: "3+1 Pack de microdosis de trufas mágicas- MINI CULTIVO EXPERIMENTAL",
+            price: "41,97 €",
+            category: "MICRODOSIS",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
+            description: [
+                "MINI CULTIVO EXPERIMENTAL",
+                "-Si quieres experimentar un cultivo único, apúntate a la nueva tendencia",
+                "-Para sitios reducidos hemos creado un mini cultivo muy parecido al cultivo de las trufas clásicas",
+                "-Puedes experimentar con un pack de 6 raciones que se distribuyen en 6 mini macetas individuales con tierra. Se sigue la misma manera de cultivo como con otros tipas de trufas mencionadas.",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+            ],
+        },
+        {
+            id: "4-2-pack-microdosis",
+            title: "4+2 Pack de microdosis de trufas mágicas- MINI CULTIVO EXPERIMENTAL",
+            price: "55,96 €",
+            category: "MICRODOSIS",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
+            description: [
+                "MINI CULTIVO EXPERIMENTAL",
+                "-Si quieres experimentar un cultivo único, apúntate a la nueva tendencia",
+                "-Para sitios reducidos hemos creado un mini cultivo muy parecido al cultivo de las trufas clásicas",
+                "-Puedes experimentar con un pack de 6 raciones que se distribuyen en 6 mini macetas individuales con tierra. Se sigue la misma manera de cultivo como con otros tipas de trufas mencionadas.",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+            ],
+        },
+        {
+            id: "5-3-pack-microdosis",
+            title: "5+3 Pack de microdosis de trufas mágicas- MINI CULTIVO EXPERIMENTAL",
+            price: "69,95 €",
+            category: "MICRODOSIS",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
+            description: [
+                "MINI CULTIVO EXPERIMENTAL",
+                "-Si quieres experimentar un cultivo único, apúntate a la nueva tendencia",
+                "-Para sitios reducidos hemos creado un mini cultivo muy parecido al cultivo de las trufas clásicas",
+                "-Puedes experimentar con un pack de 6 raciones que se distribuyen en 6 mini macetas individuales con tierra. Se sigue la misma manera de cultivo como con otros tipas de trufas mencionadas.",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+            ],
+        },
+        {
+            id: "trufas-atlantis",
+            title: "Trufas mágicas psilocybe Atlantis",
+            price: "16,95 €",
+            category: "TRUFAS MÁGICAS",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/trufas-magicas-psilocybe-atlantis-500x500.jpg",
+            shortDescription: [
+                "Aviso:",
+                "Todas las trufas mágicas contienen los psicodélicos naturales psilocibina y psilocina. La substancia activa de las trufas mágicas es la psilocibina, un neurotransmisor triptamina similar a los producidos por el cuerpo de manera natural. La psilocibina no es tóxica.",
+                "En España está prohibida su toma como si en Holanda. Si accidentalmente ingieres estas trufas y te sentirás (en unos 15-45min.) con efectos visuales muy vivos, intensos y coloridos, cambios en la percepción de colores y sonidos, oledas de energía por todo el cuerpo, visiones vividas con los ojos cerrados, llama al Servicio de Información Toxicológica. Los efectos pueden durar hasta 6 horas, dependiendo de tu tolerancia, condición física y otros factores.",
+                "Deben de estar conservadas en la nevera, hasta 6 semanas.",
+                "Ingredientes: Un paquete contiene 15 gramos de trufas, aunque esta cantidad puede verse reducida por la pérdida de agua durante el transporte y el almacenamiento.",
+            ],
+            description: [
+                "La trufa mágica psilocybe Atlantis es conocida como la 'Fruta de la Utopía'. Está emparentada con la Mexicana pero mucho mas potente. Por su facilidad de cultivar y formas curiosas se ha convertido en la preferida por muchos cultivadores.",
+                "Fue descubierta en EE.UU en los estados de Georgia y Arkansas. Esta variedad es muy raro encontrarla en su medio natural.",
+                "La trufa Atlantis tiene un olor que mucha gente encuentra más atractiva que otras trufas mágicas. Atlantis es un poco menos resistente que la Hollandia sin embargo, ¡es el producto adecuado para los amantes de la trufa más experimentados!",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+                "Conservar en la nevera, hasta 6 semanas.",
+            ],
+        },
+        {
+            id: "trufas-cattaleya",
+            title: "Trufas mágicas psilocybe Cattaleya",
+            price: "22,95 €",
+            category: "TRUFAS MÁGICAS",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/trufas-magicas-psilocybe-cattaleya-1-500x500.jpg",
+            shortDescription: [
+                "Aviso:",
+                "Todas las trufas mágicas contienen los psicodélicos naturales psilocibina y psilocina. La substancia activa de las trufas mágicas es la psilocibina, un neurotransmisor triptamina similar a los producidos por el cuerpo de manera natural. La psilocibina no es tóxica.",
+                "En España está prohibida su toma como si en Holanda. Si accidentalmente ingieres estas trufas y te sentirás (en unos 15-45min.) con efectos visuales muy vivos, intensos y coloridos, cambios en la percepción de colores y sonidos, oledas de energía por todo el cuerpo, visiones vividas con los ojos cerrados, llama al Servicio de Información Toxicológica. Los efectos pueden durar hasta 6 horas, dependiendo de tu tolerancia, condición física y otros factores.",
+                "Deben de estar conservadas en la nevera, hasta 6 semanas.",
+                "Ingredientes: Un paquete contiene 15 gramos de trufas, aunque esta cantidad puede verse reducida por la pérdida de agua durante el transporte y el almacenamiento.",
+            ],
+            description: [
+                "La trufa mágica Cattaleya es nuestra reina de todas las trufas. Es versión evolucionada de las variedades Valhalla y Nirvana. Es la variedad más potente con tamaño extendido y estéticamente más bonita. Ha superado todas otras variedades como Nirvana, Utopía, Hollandia.",
+                "Con Cattaleya lograrás experiencias únicas.",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+                "Conservar en la nevera, hasta 6 semanas.",
+            ],
+        },
+        {
+            id: "trufas-hollandia",
+            title: "Trufas mágicas psilocybe Hollandia",
+            price: "21,50 €",
+            category: "TRUFAS MÁGICAS",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/trufas-magicas-psilocybe-hollandia-500x500.jpg",
+            shortDescription: [
+                "Aviso:",
+                "Todas las trufas mágicas contienen los psicodélicos naturales psilocibina y psilocina. La substancia activa de las trufas mágicas es la psilocibina, un neurotransmisor triptamina similar a los producidos por el cuerpo de manera natural. La psilocibina no es tóxica.",
+                "En España está prohibida su toma como si en Holanda. Si accidentalmente ingieres estas trufas y te sentirás (en unos 15-45min.) con efectos visuales muy vivos, intensos y coloridos, cambios en la percepción de colores y sonidos, oledas de energía por todo el cuerpo, visiones vividas con los ojos cerrados, llama al Servicio de Información Toxicológica. Los efectos pueden durar hasta 6 horas, dependiendo de tu tolerancia, condición física y otros factores.",
+                "Deben de estar conservadas en la nevera, hasta 6 semanas.",
+                "Ingredientes: Un paquete contiene 15 gramos de trufas, aunque esta cantidad puede verse reducida por la pérdida de agua durante el transporte y el almacenamiento.",
+            ],
+            description: [
+                "La Psilocybe Hollandia es otra de las mejores variedades de trufas mágicas que existe hoy en dia. Es una variedad nueva, casi 2 veces más potente que las demás. Como el nombre dice, proviene de Holanda, cultivada por nuestro mejor y más sofisticado experto en el cultivo de trufas.",
+                "En estos último años, hemos desarrollado un nuevo tipo de Psilocybe que contiene casi dos veces más ingredientes activos que la Psilocybe Atlantis. El tiempo de crecimiento de Hollandia es de unos 10 meses, mucho más largo que en las otras variedades de trufas.",
+                "Cultivando esta variedad te llevará a una experiencia inolvidable. ¡Es una delicatessen entre las trufas!",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+                "CONSERVAR EN LA NEVERA HASTA 6 SEMANAS.",
+            ],
+        },
+        {
+            id: "kit-treasure-coast",
+            title: "Kit de cultivo de setas Psilocybe Cubensis Treasure Coast, Supra GrowKit 100% Micelio",
+            price: "36,00 €",
+            category: "KITS DE CULTIVO",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/kit-de-cultivo-de-setas-psilocybe-cubensis-treasure-coast-500x500.jpg",
+            description: [
+                "La variedad Treasure Coast viene de la costa sur de Florida. Son muy fácil de cultivar y algunas veces incluso puedes encontrar algunos albinos entre ellos. Las setas son bastante altas con un sombrero de color caramelo-blanco. Su potencia es media-alta.",
+                "Muy populares para principiantes.",
+                "Sigue nuestras instrucciones de cultivo, y obtendras varias cosechas de unos 300-400 gr de esta curiosa seta!",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+            ],
+        },
+        {
+            id: "kit-orissa-india",
+            title: "Kit de cultivo de setas Psilocybe Cubensis Orissa India, Supra GrowKit 100% Micelio",
+            price: "36,00 €",
+            category: "KITS DE CULTIVO",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/kit-de-cultivo-de-setas-psilocybe-cubensis-orissa-india-500x500.jpg",
+            description: [
+                "La Psilocybe Cubensis Orissa India es otra de las variedades descubiertas por el micólogo John Allen. Es la seta mágica mas grande que existe hoy en día en todo el mundo. Lo curioso es que en su ambiente natural crece en excrementos de elefantes y sus sombrerillos son enormes, tienen eltamaño de ¡un plato!. Como nuestros grow kits tienen sólamente 1200 ml de sustrato, teniamos que modificarlos genéticamente a un tamaño reducido.",
+                "Si sigues nuestras instrucciones de cultivo, obtendrás varias cosechas de unos 300-400 gr de esta extraña seta!",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+            ],
+        },
+        {
+            id: "kit-vietnam",
+            title: "Kit de cultivo de setas Psilocybe Cubensis Vietnam, Supra GrowKit 100% Micelio",
+            price: "36,00 €",
+            category: "KITS DE CULTIVO",
+            image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/kit-de-cultivo-de-setas-psilocybe-cubensis-vietnam-500x500.jpg",
+            description: [
+                "Esta Psilocybe Cubensis proviene de Vietnam. Donde más suele crecer en su forma silvestre son sitios húmedos, cerca de las plantaciones de arroz. Sus hermosas setas tienen tallos amarillos, carnosos y sombrerillos muy grandes, hasta 5cm de diámetro. Potente y fácil de cultivar! Esta bastance nueva variedad te podria sorprender!",
+                "Si sigues nuestras instrucciones de cultivo, obtendrás varias cosechas de unos 300-400 gr de esta hermosa seta!",
+                "TODOS NUESTROS PRODUCTOS SE VENDEN UNICAMENTE PARA SU CULTIVO. NO PARA SU CONSUMO NI OTRO USO INDEBIDO.",
+            ],
+        },
+    ];
+
+    return products.map((product) => {
+        const related = products
+            .filter(
+                (p) => p.id !== product.id && p.category === product.category
+            )
+            .map((p) => ({
+                title: p.title,
+                price: p.price,
+                image: p.image,
+                url: `/producto/${p.id}`,
+            }))
+            .slice(0, 3); // Coger solo máximo 3 relacionados
+
+        return {
+            params: { id: product.id },
+            props: {
+                title: product.title,
+                price: product.price,
+                category: product.category,
+                image: product.image,
+                description: product.description,
+                shortDescription: product.shortDescription || null,
+                related: related,
+            },
+        };
+    });
+}
+
+const { id } = Astro.params;
+const {
+    title,
+    price,
+    category,
+    image,
+    description,
+    shortDescription,
+    related,
+} = Astro.props;
+---
+
+<Layout title={`${title} | GrowTrades`}>
+    <Header />
+    <main
+        class="min-h-screen bg-bg-dark text-white pt-32 pb-24 border-t border-white/5"
+    >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
+                <!-- Columna Izquierda: Imagen -->
+                <div class="lg:w-1/2 flex justify-center">
+                    <div
+                        class="relative w-full max-w-lg aspect-[4/3] max-h-[500px] bg-white rounded-3xl overflow-hidden shadow-2xl p-8 flex items-center justify-center border border-white/10 group cursor-pointer hover:border-gold transition-colors duration-500 sticky top-32"
+                    >
+                        <img
+                            src={image}
+                            alt={title}
+                            class="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
+                        <div
+                            class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        >
+                        </div>
+                        <!-- Botón flotante para ver imagen grande simulado -->
+                        <div
+                            class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        >
+                            <span
+                                class="material-symbols-outlined text-gray-800 pointer-events-none"
+                                >zoom_in</span
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Info Principal -->
+                <div class="lg:w-1/2 flex flex-col justify-center py-10">
+                    <!-- Migas de pan / Categoría -->
+                    <nav
+                        class="flex items-center gap-2 mb-6 font-mono text-xs text-gray-400 font-bold uppercase tracking-widest"
+                    >
+                        <a href="/" class="hover:text-gold transition-colors"
+                            >INICIO</a
+                        >
+                        <span class="text-gray-600">/</span>
+                        <a
+                            href={category === "MICRODOSIS"
+                                ? "/microdosis"
+                                : category === "TRUFAS MÁGICAS"
+                                ? "/trufas"
+                                : "/kits-de-cultivo"}
+                            class="hover:text-gold transition-colors"
+                            >{category}</a
+                        >
+                    </nav>
+
+                    <!-- Título -->
+                    <h1
+                        class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight leading-tight"
+                    >
+                        {title}
+                    </h1>
+
+                    <!-- Precio y Añadir al Carrito -->
+                    <div
+                        class="border-y border-white/10 py-8 mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-6"
+                    >
+                        <p
+                            class="text-4xl font-mono text-white font-bold tracking-tighter w-40"
+                        >
+                            {price}
+                        </p>
+
+                        <div class="flex flex-1 w-full gap-4 relative z-10">
+                            <!-- Input cantidad -->
+                            <div
+                                class="flex border border-white/20 rounded-xl overflow-hidden h-14 w-40 bg-white/5 backdrop-blur-sm"
+                            >
+                                <button
+                                    id="btn-minus"
+                                    class="hover:bg-white/10 text-white transition-colors w-12 flex-shrink-0 flex items-center justify-center font-bold text-lg"
+                                    >-</button
+                                >
+                                <input
+                                    id="qty-input"
+                                    type="number"
+                                    min="1"
+                                    value="1"
+                                    class="flex-1 text-center bg-transparent border-x border-white/20 text-white font-mono font-bold text-lg outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none min-w-0"
+                                />
+                                <button
+                                    id="btn-plus"
+                                    class="hover:bg-white/10 text-gold transition-colors w-12 flex-shrink-0 flex items-center justify-center font-bold text-lg"
+                                    >+</button
+                                >
+                            </div>
+                            <!-- Botón comprar base -->
+                            <button
+                                id="btn-add-to-cart"
+                                data-product={JSON.stringify({
+                                    id,
+                                    title,
+                                    price,
+                                    image,
+                                })}
+                                class="flex-1 bg-[#A03D45] text-white font-bold h-14 rounded-xl hover:bg-red-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(160,61,69,0.3)] hover:shadow-[0_4px_30px_rgba(160,61,69,0.6)] uppercase tracking-widest text-sm relative overflow-hidden group"
+                            >
+                                <span
+                                    class="relative z-10 flex items-center gap-2"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-lg"
+                                        >local_mall</span
+                                    > Añadir al carrito
+                                </span>
+                                <!-- Brillo en hover animado -->
+                                <div
+                                    class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                                >
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tiempos de envío / Tags -->
+                    <div class="flex flex-wrap gap-4">
+                        <span
+                            class="flex items-center gap-2 text-sm text-gray-300 bg-white/5 px-4 py-2 rounded-full border border-white/5 font-light"
+                        >
+                            <span
+                                class="material-symbols-outlined text-gold text-base"
+                                >local_shipping</span
+                            > Envío seguro en 24/48h
+                        </span>
+                        <span
+                            class="flex items-center gap-2 text-sm text-gray-300 bg-white/5 px-4 py-2 rounded-full border border-white/5 font-light"
+                        >
+                            <span
+                                class="material-symbols-outlined text-green-500 text-base"
+                                >verified</span
+                            > Producto 100% Orgánico
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Inferior: Detalles extendidos (Full Width / Max-width) -->
+            <div class="mt-20 max-w-4xl mx-auto">
+                <!-- Short Description / Avisos Opcional -->
+                {
+                    shortDescription && (
+                        <div class="mb-16 space-y-4 bg-white/5 border border-white/10 p-8 rounded-[2rem] shadow-xl">
+                            {shortDescription.map((item, index) => {
+                                if (item === "Más" || item === "Aviso:") {
+                                    return (
+                                        <h3 class="font-bold text-xl text-white font-display uppercase tracking-wider mb-2">
+                                            {item}
+                                        </h3>
+                                    );
+                                }
+                                if (item.startsWith("Ingredientes:")) {
+                                    return (
+                                        <div class="mt-8 pt-8 border-t border-white/10">
+                                            <h3 class="font-bold text-lg text-white font-display uppercase tracking-wider mb-2">
+                                                Ingredientes
+                                            </h3>
+                                            <p class="text-gray-400 font-light text-base">
+                                                {item.replace(
+                                                    "Ingredientes: ",
+                                                    ""
+                                                )}
+                                            </p>
+                                        </div>
+                                    );
+                                }
+                                return (
+                                    <p class="text-gray-400 font-light text-[15px] leading-relaxed">
+                                        {item}
+                                    </p>
+                                );
+                            })}
+                        </div>
+                    )
+                }
+
+                <!-- Pestañas (Tabs) visuales -->
+                <div class="border-b border-white/10 mb-10">
+                    <ul
+                        class="flex gap-12 text-sm font-bold uppercase tracking-widest"
+                    >
+                        <li
+                            id="tab-descripcion"
+                            class="text-gold border-b-2 border-gold pb-5 cursor-pointer relative top-[1px] transition-colors"
+                        >
+                            DESCRIPCIÓN
+                        </li>
+                        <li
+                            id="tab-valoraciones"
+                            class="text-gray-500 font-normal pb-5 cursor-pointer hover:text-white transition-colors relative top-[1px] border-b-2 border-transparent"
+                        >
+                            VALORACIONES (0)
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contenido Descripción Activo -->
+                <div
+                    id="content-descripcion"
+                    class="space-y-6 text-gray-300 font-light leading-relaxed block animate-fade-in-up"
+                >
+                    {
+                        description.map((paragraph, index) => (
+                            <p
+                                class={
+                                    index === description.length - 1
+                                        ? "text-gray-500 text-xs mt-12 uppercase tracking-widest font-normal pt-8 border-t border-white/5"
+                                        : "text-lg lg:text-xl leading-relaxed text-gray-300"
+                                }
+                            >
+                                {paragraph}
+                            </p>
+                        ))
+                    }
+                </div>
+
+                <!-- Contenido Valoraciones Oculto -->
+                <div
+                    id="content-valoraciones"
+                    class="space-y-4 text-gray-300 font-light leading-relaxed hidden animate-fade-in-up"
+                >
+                    <div
+                        class="bg-white/5 border border-white/10 rounded-[2.5rem] p-16 text-center text-sm flex flex-col items-center justify-center shadow-xl"
+                    >
+                        <span
+                            class="material-symbols-outlined text-6xl text-gray-600 mb-6 block animate-pulse"
+                        >
+                            forum
+                        </span>
+                        <h3
+                            class="font-display text-2xl text-white font-bold mb-4 tracking-widest uppercase"
+                        >
+                            AÚN NO HAY RESEÑAS
+                        </h3>
+                        <p
+                            class="mb-10 text-gray-400 font-light text-lg max-w-sm"
+                        >
+                            En estos momentos no hay reseñas para este artículo.
+                            Sé el primero en compartir tu experiencia.
+                        </p>
+                        <a
+                            href="https://ximoe124.sg-host.com/mi-cuenta/"
+                            class="inline-flex items-center gap-3 bg-[#A03D45] text-white font-bold py-4 px-8 rounded-xl hover:bg-red-800 transition-all duration-300 uppercase tracking-widest text-sm shadow-[0_4px_20px_rgba(160,61,69,0.3)] hover:shadow-[0_4px_30px_rgba(160,61,69,0.6)]"
+                        >
+                            <span class="material-symbols-outlined text-xl">
+                                login
+                            </span>
+                            Inicia sesión o Regístrate
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Productos Relacionados -->
+            <div class="mt-40 border-t border-white/10 pt-20">
+                <div class="flex items-center justify-center gap-4 mb-16">
+                    <div class="h-[1px] w-12 bg-gold"></div>
+                    <h2
+                        class="font-display text-3xl font-bold text-white tracking-widest uppercase"
+                    >
+                        Productos relacionados
+                    </h2>
+                    <div class="h-[1px] w-12 bg-gold"></div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 opacity-70"
+                >
+                    <!-- Dummy items simulando productos relacionados para rellenar visualmente -->
+                    {
+                        related.map((rel) => (
+                            <a
+                                href={rel.url}
+                                class="bg-white/5 rounded-[2rem] border border-white/5 p-8 flex flex-col items-center group cursor-pointer hover:border-gold/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+                            >
+                                <div class="w-full aspect-square bg-white rounded-xl mb-6 p-4 flex items-center justify-center shadow-inner">
+                                    <img
+                                        src={rel.image}
+                                        class="w-full h-full object-contain filter drop-shadow-md group-hover:scale-110 group-hover:rotate-2 transition-transform duration-700 ease-out"
+                                    />
+                                </div>
+                                <span class="text-gold text-[10px] font-bold uppercase tracking-widest mb-2">
+                                    {category}
+                                </span>
+                                <h3 class="text-lg font-bold text-white mb-2 text-center leading-tight min-h-[56px] flex items-center justify-center">
+                                    {rel.title}
+                                </h3>
+                                <p class="text-white font-mono font-bold text-xl mt-auto">
+                                    {rel.price}
+                                </p>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Lógica de Cantidad +/-
+            const btnMinus = document.getElementById("btn-minus");
+            const btnPlus = document.getElementById("btn-plus");
+            const qtyInput = document.getElementById("qty-input");
+
+            if (btnMinus && btnPlus && qtyInput) {
+                btnMinus.addEventListener("click", () => {
+                    let currentValue = parseInt(qtyInput.value) || 1;
+                    if (currentValue > 1) {
+                        qtyInput.value = currentValue - 1;
+                    }
+                });
+
+                btnPlus.addEventListener("click", () => {
+                    let currentValue = parseInt(qtyInput.value) || 0;
+                    qtyInput.value = currentValue + 1;
+                });
+
+                qtyInput.addEventListener("change", () => {
+                    let currentValue = parseInt(qtyInput.value);
+                    if (isNaN(currentValue) || currentValue < 1) {
+                        qtyInput.value = 1;
+                    }
+                });
+            }
+
+            // Integración Carrito
+            const btnAddToCart = document.getElementById("btn-add-to-cart");
+            if (btnAddToCart && (window as any).addToCartGlobal) {
+                btnAddToCart.addEventListener("click", () => {
+                    const productData = JSON.parse(
+                        btnAddToCart.dataset.product
+                    );
+                    const quantity =
+                        parseInt(qtyInput ? qtyInput.value : "1") || 1;
+                    (window as any).addToCartGlobal({
+                        ...productData,
+                        quantity,
+                    });
+                });
+            }
+
+            // Lógica de Pestañas (Tabs) Descripción vs Valoraciones
+            const tabDesc = document.getElementById("tab-descripcion");
+            const tabVal = document.getElementById("tab-valoraciones");
+            const contentDesc = document.getElementById("content-descripcion");
+            const contentVal = document.getElementById("content-valoraciones");
+
+            if (tabDesc && tabVal && contentDesc && contentVal) {
+                const activeTabClass =
+                    "text-gold border-b-2 border-gold pb-5 cursor-pointer relative top-[1px] transition-all duration-300 font-bold";
+                const inactiveTabClass =
+                    "text-gray-500 font-normal pb-5 cursor-pointer hover:text-white transition-all duration-300 relative top-[1px] border-b-2 border-transparent";
+
+                tabDesc.addEventListener("click", () => {
+                    tabDesc.className = activeTabClass;
+                    tabVal.className = inactiveTabClass;
+                    contentDesc.classList.remove("hidden");
+                    contentVal.classList.add("hidden");
+                });
+
+                tabVal.addEventListener("click", () => {
+                    tabVal.className = activeTabClass;
+                    tabDesc.className = inactiveTabClass;
+                    contentVal.classList.remove("hidden");
+                    contentDesc.classList.add("hidden");
+                });
+            }
+        });
+    </script>
+</Layout>

@@ -1,0 +1,190 @@
+---
+import CartDrawer from "../components/CartDrawer.astro";
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>{title}</title>
+
+        <script
+            src="https://cdn.tailwindcss.com?plugins=forms,typography"
+            is:inline
+        ></script>
+        <script is:inline>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#c27845", // Burnt orange from the button
+                            secondary: "#1a3321", // Deep green from nav
+                            gold: "#d4a76a", // Gold text color
+                            "background-light": "#fcfaf5", // Creamy off-white background
+                            "background-dark": "#0f1712", // Very dark green/black for dark mode
+                            "card-light": "#ffffff",
+                            "card-dark": "#1e2923",
+                        },
+                        fontFamily: {
+                            sans: ["Montserrat", "sans-serif"],
+                            display: ["Lora", "serif"],
+                            mono: ["Space Grotesk", "monospace"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.5rem",
+                            xl: "1rem",
+                            "2xl": "1.5rem",
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+            rel="stylesheet"
+        />
+
+        <style is:global>
+            .hero-overlay {
+                background: linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(0, 0, 0, 0.4) 50%,
+                    rgba(0, 0, 0, 0.1) 100%
+                );
+            }
+        </style>
+
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a3321'/><text x='50%25' y='50%25' font-family='serif' font-size='50' font-weight='bold' fill='%23d4a76a' dominant-baseline='central' text-anchor='middle'>GT</text></svg>"
+        />
+
+        <style is:global>
+            /* Custom magical cursor styles */
+            body {
+                cursor: none;
+            }
+
+            a,
+            button,
+            input,
+            select,
+            textarea,
+            [role="button"],
+            .cursor-pointer {
+                cursor: none !important;
+            }
+
+            .magical-cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 16px;
+                height: 16px;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 1) 0%,
+                    rgba(212, 167, 106, 1) 40%,
+                    rgba(212, 167, 106, 0) 80%
+                );
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 99999;
+                transform: translate(-50%, -50%);
+                box-shadow: 0 0 15px 5px rgba(212, 167, 106, 0.4),
+                    0 0 30px 10px rgba(212, 167, 106, 0.2);
+                transition: width 0.2s, height 0.2s, background 0.2s;
+                mix-blend-mode: screen;
+            }
+
+            .magical-cursor.hovering {
+                width: 32px;
+                height: 32px;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0.8) 0%,
+                    rgba(212, 167, 106, 0.5) 40%,
+                    rgba(212, 167, 106, 0) 80%
+                );
+                border: 1px solid rgba(212, 167, 106, 0.8);
+                box-shadow: 0 0 20px rgba(212, 167, 106, 0.6) inset,
+                    0 0 20px rgba(212, 167, 106, 0.6);
+                mix-blend-mode: normal;
+            }
+
+            @media (hover: none) and (pointer: coarse) {
+                body,
+                a,
+                button,
+                input,
+                select,
+                textarea,
+                [role="button"] {
+                    cursor: auto !important;
+                }
+
+                .magical-cursor {
+                    display: none !important;
+                }
+            }
+        </style>
+    </head>
+
+    <body
+        class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300"
+    >
+        <div class="magical-cursor" id="customCursor"></div>
+
+        <slot />
+
+        <script is:inline>
+            document.addEventListener("DOMContentLoaded", () => {
+                const cursor = document.getElementById("customCursor");
+                const interactiveElements = document.querySelectorAll(
+                    'a, button, input, select, textarea, [role="button"], .cursor-pointer'
+                );
+
+                document.addEventListener("mousemove", (e) => {
+                    cursor.style.left = e.clientX + "px";
+                    cursor.style.top = e.clientY + "px";
+                });
+
+                interactiveElements.forEach((el) => {
+                    el.addEventListener("mouseenter", () =>
+                        cursor.classList.add("hovering")
+                    );
+                    el.addEventListener("mouseleave", () =>
+                        cursor.classList.remove("hovering")
+                    );
+                });
+
+                // Hide cursor when leaving the window
+                document.addEventListener("mouseleave", () => {
+                    cursor.style.display = "none";
+                });
+
+                document.addEventListener("mouseenter", () => {
+                    cursor.style.display = "block";
+                });
+            });
+        </script>
+        <CartDrawer />
+    </body>
+</html>
