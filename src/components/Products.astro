@@ -1,4 +1,6 @@
 ---
+import ProductCard from "./ProductCard.astro";
+
 const products = [
     {
         title: "Psilocybe Cubensis Treasure Coast",
@@ -8,7 +10,7 @@ const products = [
         image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/kit-de-cultivo-de-setas-psilocybe-cubensis-treasure-coast-500x500.jpg",
         url: "/producto/kit-treasure-coast",
         badge: "Más Vendido",
-        imageBg: "bg-white"
+        imageBg: "bg-white",
     },
     {
         title: "2+1 Pack Microdosis",
@@ -18,7 +20,7 @@ const products = [
         image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
         url: "/producto/2-1-pack-microdosis",
         badge: null,
-        imageBg: "bg-white"
+        imageBg: "bg-white",
     },
     {
         title: "Psilocybe Hollandia",
@@ -28,7 +30,7 @@ const products = [
         image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/trufas-magicas-psilocybe-hollandia-500x500.jpg",
         url: "/producto/trufas-hollandia",
         badge: "Pro",
-        imageBg: "bg-white"
+        imageBg: "bg-white",
     },
     {
         title: "Psilocybe Atlantis",
@@ -38,95 +40,33 @@ const products = [
         image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/trufas-magicas-psilocybe-atlantis-500x500.jpg",
         url: "/producto/trufas-atlantis",
         badge: null,
-        imageBg: "bg-white"
-    }
+        imageBg: "bg-white",
+    },
 ];
 ---
+
 <section id="productos" class="py-12 bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-end mb-10">
             <div>
-                <span class="text-gold font-bold tracking-widest uppercase text-xs mb-2 block">Catálogo 2026</span>
-                <h2 class="font-display text-3xl text-secondary dark:text-white uppercase tracking-[-0.02em]">
-                    Productos Destacados</h2>
+                <span
+                    class="text-gold font-bold tracking-widest uppercase text-xs mb-2 block"
+                    >Catálogo 2026</span
+                >
+                <h2
+                    class="font-display text-3xl text-secondary dark:text-white uppercase tracking-[-0.02em]"
+                >
+                    Productos Destacados
+                </h2>
             </div>
-            <a class="text-secondary dark:text-gold font-medium hover:underline text-sm uppercase tracking-wider"
-                href="/productos">Ver todos</a>
+            <a
+                class="text-secondary dark:text-gold font-medium hover:underline text-sm uppercase tracking-wider"
+                href="/productos">Ver todos</a
+            >
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map(product => (
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col group relative">
-                    {product.badge && (
-                        <div class="absolute top-3 right-3 bg-secondary/90 text-gold text-[10px] font-bold uppercase px-2 py-1 rounded z-10 backdrop-blur-sm">
-                            {product.badge}
-                        </div>
-                    )}
-                    <div class={`aspect-square relative overflow-hidden ${product.imageBg}`}>
-                        <img alt={product.title}
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            src={product.image} />
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <p class={`text-[10px] font-bold ${product.categoryColor} tracking-widest uppercase mb-1`}>
-                            {product.category}
-                        </p>
-                        <h4 class="font-display text-lg font-bold text-secondary dark:text-white mb-4 line-clamp-2 tracking-tighter">
-                            {product.title}
-                        </h4>
-                        <div class="mt-auto">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="font-mono text-xl font-bold text-gray-900 dark:text-white tracking-tighter">
-                                    {product.price}
-                                </span>
-                                <a href={product.url} class="font-mono border-2 border-secondary text-secondary dark:border-gold dark:text-gold hover:bg-secondary hover:text-white dark:hover:bg-gold dark:hover:text-secondary px-3 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-1">
-                                    <span class="material-symbols-outlined text-[14px]">visibility</span>
-                                </a>
-                                <button 
-                                    class="add-home-btn font-mono bg-[#A03D45] text-white hover:bg-red-800 px-4 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-1"
-                                    data-product={JSON.stringify(product)}
-                                >
-                                    <span class="material-symbols-outlined text-[14px]">shopping_cart</span>
-                                    Añadir
-                                </button>
-                            </div>
-                            <!-- Trust Icons -->
-                            <div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-800 opacity-60 group-hover:opacity-100 transition-opacity">
-                                <div class="flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-[14px]">visibility_off</span>
-                                    <span class="text-[9px] font-bold uppercase tracking-tighter">Discreto</span>
-                                </div>
-                                <div class="flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-[14px]">lock</span>
-                                    <span class="text-[9px] font-bold uppercase tracking-tighter">Seguro</span>
-                                </div>
-                                <div class="flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-[14px]">science</span>
-                                    <span class="text-[9px] font-bold uppercase tracking-tighter">Lab</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ))}
+            {products.map((product) => <ProductCard product={product} />)}
         </div>
     </div>
 </section>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const homeAddBtns = document.querySelectorAll('.add-home-btn');
-        homeAddBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const button = e.currentTarget as HTMLElement;
-                const productData = JSON.parse(button.dataset.product || '{}');
-                // Asumimos cantidad 1 por defecto al añadir desde la home rápida
-                if ((window as any).addToCartGlobal) {
-                    // Limpiamos id por si acaso no tiene, usar de fallback título normalizado
-                    const id = productData.id || productData.url?.split('/').pop() || productData.title.replace(/\s+/g, '-').toLowerCase();
-                    (window as any).addToCartGlobal({ ...productData, id, quantity: 1 });
-                }
-            });
-        });
-    });
-</script>

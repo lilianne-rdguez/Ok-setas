@@ -1,0 +1,130 @@
+---
+interface Props {
+    product: {
+        title: string;
+        category: string;
+        categoryColor: string;
+        price: string;
+        image: string;
+        url: string;
+        badge: string | null;
+        imageBg?: string;
+    };
+}
+
+const { product } = Astro.props;
+const imageBg = product.imageBg || "bg-white";
+---
+
+<div
+    class="bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col group relative"
+>
+    {
+        product.badge && (
+            <div class="absolute top-3 right-3 bg-secondary/90 text-gold text-[10px] font-bold uppercase px-2 py-1 rounded z-10 backdrop-blur-sm">
+                {product.badge}
+            </div>
+        )
+    }
+    <div class={`aspect-square relative overflow-hidden ${imageBg}`}>
+        <img
+            alt={product.title}
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            src={product.image}
+        />
+    </div>
+    <div class="p-6 flex flex-col flex-grow">
+        <p
+            class={`text-[10px] font-bold ${product.categoryColor} tracking-widest uppercase mb-1`}
+        >
+            {product.category}
+        </p>
+        <h4
+            class="font-display text-lg font-bold text-secondary dark:text-white mb-4 line-clamp-2 tracking-tighter"
+        >
+            {product.title}
+        </h4>
+        <div class="mt-auto">
+            <div class="flex items-center justify-between mb-4">
+                <span
+                    class="font-mono text-xl font-bold text-gray-900 dark:text-white tracking-tighter"
+                >
+                    {product.price}
+                </span>
+                <a
+                    href={product.url}
+                    class="font-mono border-2 border-secondary text-secondary dark:border-gold dark:text-gold hover:bg-secondary hover:text-white dark:hover:bg-gold dark:hover:text-secondary px-3 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-1"
+                >
+                    <span class="material-symbols-outlined text-[14px]"
+                        >visibility</span
+                    >
+                </a>
+                <button
+                    class="product-card-add-btn font-mono bg-[#A03D45] text-white hover:bg-red-800 px-4 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-1"
+                    data-product={JSON.stringify(product)}
+                >
+                    <span class="material-symbols-outlined text-[14px]"
+                        >shopping_cart</span
+                    >
+                    Añadir
+                </button>
+            </div>
+            <!-- Trust Icons -->
+            <div
+                class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-800 opacity-60 group-hover:opacity-100 transition-opacity"
+            >
+                <div class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]"
+                        >visibility_off</span
+                    >
+                    <span
+                        class="text-[9px] font-bold uppercase tracking-tighter"
+                        >Discreto</span
+                    >
+                </div>
+                <div class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]"
+                        >lock</span
+                    >
+                    <span
+                        class="text-[9px] font-bold uppercase tracking-tighter"
+                        >Seguro</span
+                    >
+                </div>
+                <div class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]"
+                        >science</span
+                    >
+                    <span
+                        class="text-[9px] font-bold uppercase tracking-tighter"
+                        >Lab</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const addBtns = document.querySelectorAll(".product-card-add-btn");
+        addBtns.forEach((btn) => {
+            // Ensure we handle clicks properly
+            btn.addEventListener("click", (e) => {
+                const button = e.currentTarget as HTMLElement;
+                const productData = JSON.parse(button.dataset.product || "{}");
+                if ((window as any).addToCartGlobal) {
+                    const id =
+                        productData.id ||
+                        productData.url?.split("/").pop() ||
+                        productData.title.replace(/\s+/g, "-").toLowerCase();
+                    (window as any).addToCartGlobal({
+                        ...productData,
+                        id,
+                        quantity: 1,
+                    });
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,106 @@
+---
+---
+
+<nav
+    class="bg-secondary/80 backdrop-blur-md text-white w-full z-40 sticky top-0 border-b border-white/10"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <a
+                href="/"
+                class="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            >
+                <span class="material-symbols-outlined text-4xl"
+                    >psychiatry</span
+                >
+                <span
+                    class="font-sans font-bold text-2xl tracking-tight uppercase"
+                    >GrowTrades</span
+                >
+            </a>
+            <div
+                class="hidden md:flex items-center space-x-6 lg:space-x-8 text-xs lg:text-sm tracking-wide font-medium text-gray-300"
+            >
+                <div class="relative group py-4">
+                    <a
+                        href="/productos"
+                        class="flex items-center hover:text-gold transition-colors focus:outline-none uppercase"
+                    >
+                        PRODUCTOS
+                        <span
+                            class="material-symbols-outlined text-[1rem] ml-1 transition-transform group-hover:rotate-180"
+                            >expand_more</span
+                        >
+                    </a>
+                    <!-- Dropdown Content -->
+                    <div
+                        class="absolute left-0 top-full hidden group-hover:block w-56 bg-white dark:bg-card-dark rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 py-3 z-50 transform opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
+                    >
+                        <a
+                            class="block px-5 py-2.5 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gold dark:hover:text-gold transition-colors font-medium border-l-2 border-transparent hover:border-gold"
+                            href="/microdosis">MICRODOSIS</a
+                        >
+                        <a
+                            class="block px-5 py-2.5 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gold dark:hover:text-gold transition-colors font-medium border-l-2 border-transparent hover:border-gold"
+                            href="/trufas">TRUFAS MÁGICAS</a
+                        >
+                        <a
+                            class="block px-5 py-2.5 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gold dark:hover:text-gold transition-colors font-medium border-l-2 border-transparent hover:border-gold"
+                            href="/kits-de-cultivo">KITS DE CULTIVO</a
+                        >
+                    </div>
+                </div>
+                <span class="text-gray-600">|</span>
+                <a
+                    class="hover:text-gold transition-colors"
+                    href="/sobre-nosotros">SOBRE NOSOTROS</a
+                >
+
+                <div class="flex items-center gap-1">
+                    <div
+                        class="p-2 rounded-full hover:bg-white/10 hover:text-gold transition-colors flex items-center justify-center open-cart-btn cursor-pointer relative"
+                    >
+                        <span class="material-symbols-outlined">local_mall</span
+                        >
+                        <!-- Badge para el carrito -->
+                        <span
+                            class="cart-badge hidden absolute top-0 right-0 bg-gold text-bg-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center translate-x-1/4 -translate-y-1/4 shadow-md"
+                        >
+                            0
+                        </span>
+                    </div>
+
+                    <!-- User Account Dropdown -->
+                    <div class="relative group py-4">
+                        <button
+                            class="p-2 rounded-full hover:bg-white/10 hover:text-gold transition-colors flex items-center justify-center focus:outline-none"
+                        >
+                            <span class="material-symbols-outlined">person</span
+                            >
+                        </button>
+                        <!-- Dropdown Content -->
+                        <div
+                            class="absolute right-0 top-full hidden group-hover:block w-48 bg-white dark:bg-card-dark rounded-xl shadow-2xl border border-gray-100 dark:border-gray-700 py-2 z-50 transform opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-left"
+                        >
+                            <a
+                                class="block px-5 py-2.5 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gold dark:hover:text-gold transition-colors font-medium text-sm border-l-2 border-transparent hover:border-gold"
+                                href="/mi-cuenta">INICIAR SESIÓN</a
+                            >
+                            <a
+                                class="block px-5 py-2.5 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gold dark:hover:text-gold transition-colors font-medium text-sm border-l-2 border-transparent hover:border-gold"
+                                href="/mi-cuenta">CREAR CUENTA</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-white hover:text-gold p-2">
+                        <span class="material-symbols-outlined text-3xl"
+                            >menu</span
+                        >
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
