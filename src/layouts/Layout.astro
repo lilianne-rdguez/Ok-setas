@@ -1,5 +1,6 @@
 ---
 import CartDrawer from "../components/CartDrawer.astro";
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
     title: string;
@@ -186,5 +187,6 @@ const { title } = Astro.props;
             });
         </script>
         <CartDrawer />
+        <SpeedInsights />
     </body>
 </html>
