@@ -1,5 +1,6 @@
 ---
 import CartDrawer from "../components/CartDrawer.astro";
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
     title: string;
@@ -58,6 +59,8 @@ const { title } = Astro.props;
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
             rel="stylesheet"
         />
+
+        <Analytics />
 
         <style is:global>
             .hero-overlay {
