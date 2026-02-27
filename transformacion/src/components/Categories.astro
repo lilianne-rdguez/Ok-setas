@@ -1,0 +1,69 @@
+---
+const categories = [
+    {
+        title: "Microdosis",
+        url: "/microdosis",
+        image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/Captura-de-pantalla-2026-01-19-104259.png",
+        gradientOpacity: "group-hover:opacity-100",
+        gradientStart: "from-black/80 via-black/20",
+    },
+    {
+        title: "Trufas Mágicas",
+        url: "/trufas",
+        image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/Captura-de-pantalla-2026-01-19-094506.png",
+        gradientOpacity: "group-hover:opacity-90",
+        gradientStart: "from-black/90 via-black/40",
+    },
+    {
+        title: "Kits de Cultivo",
+        url: "/kits-de-cultivo",
+        image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/Captura-de-pantalla-2026-01-19-105228.png",
+        gradientOpacity: "group-hover:opacity-90",
+        gradientStart: "from-black/90 via-black/40",
+    },
+];
+---
+
+<!-- CATEGORÍAS PRINCIPALES -->
+<section id="categorias" class="py-12 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <span
+                class="text-gold font-bold tracking-widest uppercase text-xs mb-2 block"
+                >Un modelo que marca la diferencia</span
+            >
+            <h2
+                class="font-display text-3xl text-secondary dark:text-white uppercase tracking-[-0.02em]"
+            >
+                Descubre Nuestras Categorías
+            </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {
+                categories.map((category) => (
+                    <a
+                        href={category.url}
+                        class="group relative block h-80 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 mt-0"
+                    >
+                        <img
+                            src={category.image}
+                            alt={category.title}
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div
+                            class={`absolute inset-0 bg-gradient-to-t ${category.gradientStart} to-transparent transition-opacity ${category.gradientOpacity}`}
+                        />
+                        <div class="absolute bottom-0 left-0 p-8 w-full z-10">
+                            <h3 class="font-display text-2xl font-bold text-white mb-2 transform transition-transform group-hover:-translate-y-2 tracking-tighter">
+                                {category.title}
+                            </h3>
+                            <span class="text-gold text-sm uppercase tracking-wider font-semibold opacity-0 transform translate-y-4 transition-all group-hover:opacity-100 group-hover:translate-y-0 block">
+                                Explorar catálogo &rarr;
+                            </span>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,229 @@
+<html class="scroll-smooth" lang="en"><head><script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#c27845", // Burnt orange from the button
+          secondary: "#1a3321", // Deep green from nav
+          gold: "#d4a76a", // Gold text color
+          "background-light": "#fcfaf5", // Creamy off-white background
+          "background-dark": "#0f1712", // Very dark green/black for dark mode
+          "card-light": "#ffffff",
+          "card-dark": "#1e2923",
+        },
+        fontFamily: {
+          display: ["Playfair Display", "serif"],
+          sans: ["Inter", "sans-serif"],
+        },
+        borderRadius: {
+          DEFAULT: "0.5rem",
+          xl: "1rem",
+          "2xl": "1.5rem",
+        },
+      },
+    },
+  };
+</script>
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fungi Insights - Mycological Wisdom</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<style>
+        .hero-overlay {
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+<nav class="bg-secondary text-white w-full z-50 sticky top-0 border-b border-gray-700 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-20 items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-4xl">forest</span>
+<span class="font-display text-2xl tracking-wider uppercase">Fungi Insights</span>
+</div>
+<div class="hidden md:flex items-center space-x-8 text-sm tracking-wide font-medium text-gray-300">
+<a class="hover:text-gold transition-colors" href="#">SPECIES GUIDE</a>
+<span class="text-gray-600">|</span>
+<a class="hover:text-gold transition-colors" href="#">CULTIVATION</a>
+<span class="text-gray-600">|</span>
+<a class="hover:text-gold transition-colors" href="#">RESEARCH</a>
+<span class="text-gray-600">|</span>
+<a class="hover:text-gold transition-colors" href="#">SAFETY</a>
+<span class="text-gray-600">|</span>
+<a class="hover:text-gold transition-colors" href="#">ABOUT</a>
+<a class="ml-4 hover:text-white text-gold font-semibold" href="#">LOGIN</a>
+<button class="p-2 rounded-full hover:bg-white/10 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined block dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block">light_mode</span>
+</button>
+</div>
+<div class="md:hidden flex items-center">
+<button class="text-white hover:text-gold p-2">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<div class="relative w-full h-[650px] overflow-hidden">
+<img alt="Glowing mushrooms in a dark mystical forest" class="absolute inset-0 w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkTremcbCdonHpJMaJvY-UtjuvhwAOP0_dwPrn5JkI3R305lSDxvDYvk5XUMheG6UyGjFbEr3PG9M8qfvr4wcXXtpHaLdfW9VoKyUFbrnXdB94vXkexbnZM-3Fu4_yvdpKm8IMiRJNvt5E8Ts4MG8GgPqYCwQOJFTlfbrPkQGWG2v4TCamjiEF_kjyZgNRKldbieJPhBMLxx1Mf2cd4zFNXEZ_63USk1xHa8RzRSDS_FbXEru2pF-D9pgHU23rszDx06wQXJGUiS8"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+<div class="max-w-2xl pt-16">
+<h1 class="font-display text-4xl md:text-6xl leading-tight text-white mb-6">
+                    MYCOLOGICAL WISDOM:<br/>
+<span class="text-gold italic block mt-2">ANCIENT KNOWLEDGE</span>
+<span class="text-gold block mt-1">FOR MODERN MINDS</span>
+</h1>
+<p class="text-gray-200 text-lg md:text-xl mb-10 max-w-xl font-light leading-relaxed">
+                    Discover the therapeutic potential, scientific research, and traditional uses of consciousness-expanding fungi.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary hover:bg-orange-700 text-white px-8 py-3.5 rounded-full font-medium tracking-wide transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                        EXPLORING THERAPIES
+                    </button>
+<button class="bg-transparent border border-white text-white hover:bg-white hover:text-secondary px-8 py-3.5 rounded-full font-medium tracking-wide transition-all flex items-center justify-center gap-2">
+                        VIEW RESEARCH
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 -mt-24 pb-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:-translate-y-1 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+<div class="w-20 h-20 mb-4 text-secondary dark:text-gold">
+<span class="material-symbols-outlined text-[5rem] font-light">spa</span>
+</div>
+<h3 class="font-display font-bold text-lg uppercase tracking-wider mb-2 text-secondary dark:text-white">TRADITIONAL<br/>USES</h3>
+<div class="h-1 w-12 bg-gold/50 rounded-full mt-auto"></div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:-translate-y-1 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+<div class="w-20 h-20 mb-4 text-secondary dark:text-gold">
+<span class="material-symbols-outlined text-[5rem] font-light">potted_plant</span>
+</div>
+<h3 class="font-display font-bold text-lg uppercase tracking-wider mb-2 text-secondary dark:text-white">CULTIVATION<br/>TECHNIQUES</h3>
+<div class="h-1 w-12 bg-gold/50 rounded-full mt-auto"></div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:-translate-y-1 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+<div class="w-20 h-20 mb-4 text-secondary dark:text-gold">
+<span class="material-symbols-outlined text-[5rem] font-light">science</span>
+</div>
+<h3 class="font-display font-bold text-lg uppercase tracking-wider mb-2 text-secondary dark:text-white">PSILOCYBIN<br/>SCIENCE</h3>
+<div class="h-1 w-12 bg-gold/50 rounded-full mt-auto"></div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:-translate-y-1 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+<div class="w-20 h-20 mb-4 text-secondary dark:text-gold">
+<span class="material-symbols-outlined text-[5rem] font-light">medical_services</span>
+</div>
+<h3 class="font-display font-bold text-lg uppercase tracking-wider mb-2 text-secondary dark:text-white">SAFETY<br/>PROTOCOLS</h3>
+<div class="h-1 w-12 bg-gold/50 rounded-full mt-auto"></div>
+</div>
+</div>
+</div>
+</div>
+<section class="py-12 bg-transparent">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-end mb-10">
+<h2 class="font-display text-3xl text-secondary dark:text-white uppercase tracking-wide">Featured Species</h2>
+<a class="text-secondary dark:text-gold font-medium hover:underline text-sm uppercase tracking-wider" href="#">View all</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow flex group">
+<div class="w-1/3 relative overflow-hidden">
+<img alt="Amanita Muscaria mushroom" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO21b704l75puo2C_DeblXrc92ICtM1nOk4CEkjJmEklCb6NbPu-HSuqmRZOP9pGhjLmERNFa2mLm6W5GSg0uNfrtMMB2q52Uj2DL7eA2dfT7DPLPzvzUW-ogOqUvAHdKy0UpcfzqXsK2D0Vc8Sp275FEoX3v2AZtJV3vrZ2DWizx5vzW7JW0SAlcpiFiveOs4FJAZIMcg1E1rsw_7C3u8eLCL1TyvF0kGJKIMUwkcpriv9Q1JBJlpiBREML89KvDDFjTO84q6Nm8"/>
+</div>
+<div class="w-2/3 p-6 flex flex-col justify-center">
+<h4 class="font-display text-xl font-bold text-secondary dark:text-white mb-1">Amanita muscaria</h4>
+<p class="text-xs font-semibold text-gold uppercase mb-2">Iconic Fly Agaric</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
+                            A comprehensive field guide to this widely recognized, yet complex species. Known for its distinct red cap and white spots.
+                        </p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow flex group">
+<div class="w-1/3 relative overflow-hidden">
+<img alt="Psilocybe Cubensis" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpr8l0Ba1oq8dhfn4FfVhFHH3d1lSzOuJlQnLN4Pg5y2UqyHNBz6a2SDGqFZJEmIfhS4TGPlNQKFLF_byjWSlfjCP4GbxcJXyklyzJwLgH072DVobHaXghZ85nohZJ2ci5h0bz-ZY3pc_bqxz5uQ39XctXZhINWakySRC-o3_tSoCjP1nKipXbIDGB_XsRgYPXK_ed57N8KuIodYlNjJxAXb7Kni1KRe7AM6MwLA2FlZXVTEYma2TSuwZD26wiecBHKVbT6vYZrc0"/>
+</div>
+<div class="w-2/3 p-6 flex flex-col justify-center">
+<h4 class="font-display text-xl font-bold text-secondary dark:text-white mb-1">Psilocybe cubensis</h4>
+<p class="text-xs font-semibold text-gold uppercase mb-2">Golden Teacher</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
+                            Latest studies on fungi and mental health applications. One of the most popular and versatile cultivated mushrooms.
+                        </p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow flex group">
+<div class="w-1/3 relative overflow-hidden">
+<img alt="Lion's Mane mushroom" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-C-2zERjVzeOaHpAGbMWxqmPIxQO_8IwJaosKq9BAsFHr3_7dhMJOjJnPQMZpax3kFed4mnNmK1lzogqCn_y8jsrYPDKaL01U-dOaVXX2DnyyPap7b_d1pGkckeyroTaC7uFmLJGxoEWZXnz2eBosvtDxpuK99WD4XlkLxhwYPNgQArlistHVucN1X3EVx9E6X3LfZlW-yvZC9-HvHbBITxU5o5NE4dqNGiVH55Wn_0UiMXMrpfDaMUMs0RpyLC4CRMLqpRBhTUM"/>
+</div>
+<div class="w-2/3 p-6 flex flex-col justify-center">
+<h4 class="font-display text-xl font-bold text-secondary dark:text-white mb-1">Hericium erinaceus</h4>
+<p class="text-xs font-semibold text-gold uppercase mb-2">Lion's Mane</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
+                            Renowned for its neurotrophic properties. Ethical gathering, identification, and safety guidelines for foraging.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-secondary text-gray-300 py-12 border-t border-gray-800 mt-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4 text-white">
+<span class="material-symbols-outlined text-3xl">forest</span>
+<span class="font-display text-xl tracking-wider uppercase">Fungi Insights</span>
+</div>
+<p class="text-sm text-gray-400">
+                        Bridging ancient mycological wisdom with modern scientific understanding.
+                    </p>
+</div>
+<div>
+<h5 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Resources</h5>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-gold transition-colors" href="#">Species Database</a></li>
+<li><a class="hover:text-gold transition-colors" href="#">Research Papers</a></li>
+<li><a class="hover:text-gold transition-colors" href="#">Community Forum</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Legal</h5>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-gold transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-gold transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-gold transition-colors" href="#">Safety Disclaimer</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Newsletter</h5>
+<p class="text-sm text-gray-400 mb-4">Subscribe for the latest research updates.</p>
+<div class="flex">
+<input class="bg-black/30 border border-gray-600 text-white text-sm rounded-l-md px-4 py-2 w-full focus:outline-none focus:border-gold" placeholder="Email address" type="email"/>
+<button class="bg-primary hover:bg-orange-700 text-white px-4 py-2 rounded-r-md transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 flex justify-between items-center text-xs text-gray-500">
+<p>© 2023 Fungi Insights. All rights reserved.</p>
+<div class="flex space-x-4">
+<a class="hover:text-white transition-colors" href="#">Twitter</a>
+<a class="hover:text-white transition-colors" href="#">Instagram</a>
+<a class="hover:text-white transition-colors" href="#">LinkedIn</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

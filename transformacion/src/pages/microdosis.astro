@@ -1,0 +1,279 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Educational from "../components/Educational.astro";
+import BenefitsSelector from "../components/BenefitsSelector.astro";
+
+const microdosingProducts = [
+    {
+        title: "2+1 Pack Microdosis",
+        subtitle: "Mini Cultivo de Iniciación",
+        price: "27,98 €",
+        image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
+        url: "/producto/2-1-pack-microdosis",
+        badge: "Inicial",
+        features: [
+            "Perfecto para introducción",
+            "Dosis precisas",
+            "100% natural sin aditivos",
+        ],
+    },
+    {
+        title: "3+1 Pack Microdosis",
+        subtitle: "Mini Cultivo Continuo",
+        price: "41,97 €",
+        image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
+        url: "/producto/3-1-pack-microdosis",
+        badge: "Más Vendido",
+        features: [
+            "Plan de seguimiento óptimo",
+            "100% Trufas Orgánicas",
+            "Empaquetado al vacío",
+        ],
+    },
+    {
+        title: "4+2 Pack Microdosis",
+        subtitle: "Mini Cultivo Avanzado",
+        price: "55,96 €",
+        image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
+        url: "/producto/4-2-pack-microdosis",
+        badge: "Avanzado",
+        features: [
+            "Mayor ahorro",
+            "Sinergia Cognitiva Extendida",
+            "Resultados sostenidos",
+        ],
+    },
+    {
+        title: "5+3 Pack Microdosis",
+        subtitle: "Mini Cultivo Experto",
+        price: "69,95 €",
+        image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
+        url: "/producto/5-3-pack-microdosis",
+        badge: "Premium",
+        features: [
+            "Tratamiento de largo plazo",
+            "Máximo bienestar cognitivo",
+            "La mejor relación valor/precio",
+        ],
+    },
+];
+---
+
+<Layout title="Microdosis | GrowTrades">
+    <Header />
+
+    <main class="min-h-screen bg-bg-dark text-white overflow-hidden relative">
+        <!-- Decoración de fondo -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-gold/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-to-ur from-yellow-700/5 to-transparent rounded-full blur-[120px] pointer-events-none z-0"
+        >
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 relative z-10"
+        >
+            <!-- Sección Hero: Introducción a la Microdosis -->
+            <div
+                class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32"
+            >
+                <div class="flex-1 text-center lg:text-left animate-fade-in-up">
+                    <span
+                        class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block"
+                        >Optimizador Cognitivo</span
+                    >
+                    <h1
+                        class="font-display text-4xl md:text-6xl leading-tight text-white mb-6 tracking-[-0.02em] uppercase"
+                    >
+                        La Revolución <br />
+                        <span class="text-gold italic block mt-2"
+                            >Microdosis</span
+                        >
+                    </h1>
+                    <p
+                        class="text-gray-200 text-lg md:text-xl font-light leading-relaxed text-pretty mb-10 max-w-2xl mx-auto lg:mx-0"
+                    >
+                        Descubre el secreto mejor guardado de emprendedores,
+                        artistas y visionarios. El protocolo de
+                        microdosificación está diseñado para elevar tu
+                        rendimiento cognitivo y bienestar emocional, sin alterar
+                        tu conciencia.
+                    </p>
+                    <div
+                        class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+                    >
+                        <a
+                            href="#comprar"
+                            class="bg-gold text-bg-dark font-bold px-8 py-4 rounded-full hover:bg-white transition-colors duration-300 uppercase tracking-widest text-sm shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+                        >
+                            Ver Producto
+                        </a>
+                        <a
+                            href="#beneficios"
+                            class="px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white/5 border border-white/10 transition-colors duration-300 flex items-center gap-2 text-gray-300"
+                        >
+                            Conocer más <span
+                                class="material-symbols-outlined text-lg"
+                                >arrow_downward</span
+                            >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex-1 flex justify-center lg:justify-end">
+                    <div class="w-full max-w-sm">
+                        <img
+                            src="https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png"
+                            alt="Pack Microdosis GrowTrades"
+                            class="w-full h-auto object-contain rounded-2xl shadow-xl border border-white/5"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Qué son las Microdosis (Educational) -->
+            <Educational />
+
+            <!-- Beneficios de la Microdosis -->
+            <BenefitsSelector />
+
+            <!-- Productos Disponibles -->
+            <section id="comprar" class="relative">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-4xl font-bold text-white uppercase tracking-widest mb-4"
+                    >
+                        Nuestra <span class="text-gold">Gama</span>
+                    </h2>
+                    <div
+                        class="h-1 w-16 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6"
+                    >
+                    </div>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        Selecciona el formato que mejor se adapte a tu nivel de
+                        experiencia y protocolo de bienestar.
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
+                >
+                    {
+                        microdosingProducts.map((prod) => (
+                            <div class="bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 p-8 shadow-2xl flex flex-col group hover:-translate-y-2 hover:border-gold/30 transition-all duration-500">
+                                <div class="relative w-full aspect-square bg-white rounded-2xl overflow-hidden p-6 flex items-center justify-center mb-8 shadow-inner">
+                                    {prod.badge && (
+                                        <div class="absolute top-3 left-3 bg-gold text-bg-dark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest z-20 shadow-lg">
+                                            {prod.badge}
+                                        </div>
+                                    )}
+                                    <img
+                                        src={prod.image}
+                                        alt={prod.title}
+                                        class="w-full h-full object-contain transform group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 ease-out drop-shadow-xl"
+                                    />
+                                </div>
+
+                                <div class="flex-1 flex flex-col">
+                                    <span class="text-gold uppercase tracking-widest text-[10px] font-bold mb-2 block">
+                                        {prod.subtitle}
+                                    </span>
+                                    <h3 class="text-2xl font-bold text-white mb-4 tracking-tight leading-tight">
+                                        {prod.title}
+                                    </h3>
+
+                                    <div class="mb-6">
+                                        <span class="text-3xl font-mono text-white font-bold tracking-tighter">
+                                            {prod.price}
+                                        </span>
+                                    </div>
+
+                                    <ul class="space-y-3 mb-8 text-left flex-1">
+                                        {prod.features.map((feature) => (
+                                            <li class="flex items-start gap-2">
+                                                <span class="material-symbols-outlined text-gold mt-0.5 text-sm">
+                                                    check_circle
+                                                </span>
+                                                <span class="text-gray-300 text-sm font-light leading-snug">
+                                                    {feature}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div class="grid grid-cols-2 gap-3 w-full mt-auto relative z-20">
+                                        <button
+                                            class="btn-add-category bg-[#A03D45] text-white font-bold py-3 rounded-xl hover:bg-red-800 transition-all duration-300 flex items-center justify-center gap-2 uppercase tracking-widest text-[10px] sm:text-xs shadow-[0_4px_20px_rgba(160,61,69,0.3)]"
+                                            data-product={JSON.stringify(prod)}
+                                        >
+                                            <span class="material-symbols-outlined text-sm">
+                                                shopping_cart
+                                            </span>
+                                            Añadir
+                                        </button>
+                                        <a
+                                            href={prod.url}
+                                            class="bg-transparent border border-white/20 text-white font-bold py-3 px-2 rounded-xl uppercase tracking-widest hover:border-gold hover:text-gold transition-all duration-300 flex justify-center items-center gap-2 text-[10px] sm:text-xs h-full"
+                                        >
+                                            <span class="material-symbols-outlined text-sm">
+                                                visibility
+                                            </span>
+                                            Info
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const catAddBtns = document.querySelectorAll(".btn-add-category");
+            catAddBtns.forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    const button = e.currentTarget as HTMLElement;
+                    const productData = JSON.parse(
+                        button.dataset.product || "{}"
+                    );
+                    if ((window as any).addToCartGlobal) {
+                        const id =
+                            productData.id ||
+                            productData.url?.split("/").pop() ||
+                            productData.title
+                                .replace(/\s+/g, "-")
+                                .toLowerCase();
+                        (window as any).addToCartGlobal({
+                            ...productData,
+                            id,
+                            quantity: 1,
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</Layout>

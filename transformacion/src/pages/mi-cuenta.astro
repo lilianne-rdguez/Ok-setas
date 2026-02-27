@@ -1,0 +1,210 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="Mi Cuenta | GrowTrades">
+    <Header />
+
+    <main
+        class="min-h-screen bg-bg-dark text-white pt-24 pb-24 border-t border-white/5 relative overflow-hidden"
+    >
+        <!-- Fondos decorativos -->
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-gold/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-900/10 to-transparent rounded-full blur-[100px] pointer-events-none z-0"
+        >
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 animate-fade-in-up">
+                <span
+                    class="text-gold font-bold tracking-widest uppercase text-xs mb-2 block"
+                    >Área Personal</span
+                >
+                <h1
+                    class="font-display text-4xl md:text-5xl text-white font-bold uppercase tracking-tight mb-4"
+                >
+                    Mi Cuenta
+                </h1>
+                <div
+                    class="h-1 w-16 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6"
+                >
+                </div>
+                <p class="text-gray-400 font-light text-lg max-w-2xl mx-auto">
+                    Accede a tu panel para gestionar pedidos, direcciones y
+                    detalles de tu cuenta en GrowTrades.
+                </p>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 max-w-5xl mx-auto"
+            >
+                <!-- ACCEDER -->
+                <div
+                    class="bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-12 shadow-xl backdrop-blur-sm animate-fade-in-up"
+                    style="animation-delay: 0.1s;"
+                >
+                    <h2
+                        class="font-display text-2xl font-bold text-white uppercase tracking-widest mb-8 flex items-center gap-3"
+                    >
+                        <span class="material-symbols-outlined text-gold"
+                            >login</span
+                        >
+                        Acceder
+                    </h2>
+
+                    <form class="space-y-6">
+                        <div>
+                            <label
+                                for="login-username"
+                                class="block text-sm font-bold text-gray-300 uppercase tracking-widest mb-2"
+                            >
+                                Nombre de usuario o correo electrónico <span
+                                    class="text-red-500">*</span
+                                >
+                            </label>
+                            <input
+                                type="text"
+                                id="login-username"
+                                required
+                                class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors font-light placeholder-gray-500"
+                                placeholder="tu@email.com"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                for="login-password"
+                                class="block text-sm font-bold text-gray-300 uppercase tracking-widest mb-2"
+                            >
+                                Contraseña <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="password"
+                                id="login-password"
+                                required
+                                class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors font-light"
+                                placeholder="••••••••"
+                            />
+                        </div>
+
+                        <div class="flex items-center justify-between mt-6">
+                            <label
+                                class="flex items-center gap-2 cursor-pointer group"
+                            >
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 rounded border-white/20 bg-white/5 text-gold focus:ring-gold focus:ring-offset-bg-dark"
+                                />
+                                <span
+                                    class="text-sm text-gray-400 group-hover:text-white transition-colors"
+                                    >Recuérdame</span
+                                >
+                            </label>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="w-full bg-[#A03D45] text-white font-bold py-4 rounded-xl hover:bg-red-800 transition-all duration-300 uppercase tracking-widest shadow-[0_4px_20px_rgba(160,61,69,0.3)] mt-8"
+                        >
+                            Acceder
+                        </button>
+
+                        <div class="text-center mt-6">
+                            <a
+                                href="#"
+                                class="text-gold hover:text-white text-sm transition-colors border-b border-transparent hover:border-white pb-0.5"
+                            >
+                                ¿Olvidaste la contraseña?
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- REGISTRARSE -->
+                <div
+                    class="bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-12 shadow-xl backdrop-blur-sm animate-fade-in-up"
+                    style="animation-delay: 0.2s;"
+                >
+                    <h2
+                        class="font-display text-2xl font-bold text-white uppercase tracking-widest mb-8 flex items-center gap-3"
+                    >
+                        <span class="material-symbols-outlined text-gold"
+                            >person_add</span
+                        >
+                        Registrarse
+                    </h2>
+
+                    <form class="space-y-6">
+                        <div>
+                            <label
+                                for="register-email"
+                                class="block text-sm font-bold text-gray-300 uppercase tracking-widest mb-2"
+                            >
+                                Dirección de correo electrónico <span
+                                    class="text-red-500">*</span
+                                >
+                            </label>
+                            <input
+                                type="email"
+                                id="register-email"
+                                required
+                                class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors font-light placeholder-gray-500"
+                                placeholder="tu@email.com"
+                            />
+                        </div>
+
+                        <div
+                            class="text-sm text-gray-400 font-light leading-relaxed mb-6 space-y-4"
+                        >
+                            <p>
+                                Se enviará un enlace para establecer una nueva
+                                contraseña a tu dirección de correo electrónico.
+                            </p>
+                            <p>
+                                Tus datos personales se utilizarán para procesar
+                                tu pedido, mejorar tu experiencia en esta web y
+                                otros propósitos descritos en nuestra <a
+                                    href="#"
+                                    class="text-gold hover:underline"
+                                    >política de privacidad</a
+                                >.
+                            </p>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="w-full bg-transparent border-2 border-gold text-gold font-bold py-4 rounded-xl hover:bg-gold hover:text-bg-dark transition-all duration-300 uppercase tracking-widest mt-8 flex items-center justify-center gap-2"
+                        >
+                            Registrarse
+                            <span class="material-symbols-outlined text-lg"
+                                >arrow_forward</span
+                            >
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+    }
+</style>
