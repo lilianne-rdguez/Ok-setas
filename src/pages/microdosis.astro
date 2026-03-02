@@ -12,6 +12,7 @@ const microdosingProducts = [
         image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
         url: "/producto/2-1-pack-microdosis",
         badge: "Inicial",
+        potency: 2,
         features: [
             "Perfecto para introducción",
             "Dosis precisas",
@@ -25,6 +26,7 @@ const microdosingProducts = [
         image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
         url: "/producto/3-1-pack-microdosis",
         badge: "Más Vendido",
+        potency: 2,
         features: [
             "Plan de seguimiento óptimo",
             "100% Trufas Orgánicas",
@@ -38,6 +40,7 @@ const microdosingProducts = [
         image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
         url: "/producto/4-2-pack-microdosis",
         badge: "Avanzado",
+        potency: 2,
         features: [
             "Mayor ahorro",
             "Sinergia Cognitiva Extendida",
@@ -51,6 +54,7 @@ const microdosingProducts = [
         image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
         url: "/producto/5-3-pack-microdosis",
         badge: "Premium",
+        potency: 3,
         features: [
             "Tratamiento de largo plazo",
             "Máximo bienestar cognitivo",
@@ -168,31 +172,60 @@ const microdosingProducts = [
                     >
                         4 productos encontrados
                     </p>
-                    <div class="flex items-center gap-4">
-                        <select
+                    <!-- Custom Potency/Price Dropdown -->
+                    <div
+                        class="relative min-w-[240px]"
+                        id="custom-select-wrapper"
+                    >
+                        <label
+                            class="absolute -top-6 left-1 text-[9px] uppercase tracking-[0.2em] text-gray-500 font-bold"
+                            >Ordenar por</label
+                        >
+                        <button
+                            id="custom-select-trigger"
+                            class="w-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-xl pl-5 pr-10 py-3.5 focus:outline-none focus:border-gold/50 cursor-pointer transition-all hover:bg-white/10 hover:border-white/20 flex items-center justify-between group shadow-lg"
+                        >
+                            <span id="select-label">Más Populares</span>
+                            <span
+                                class="material-symbols-outlined text-gold group-hover:rotate-180 transition-transform duration-500 text-[18px]"
+                                >expand_more</span
+                            >
+                        </button>
+
+                        <ul
+                            id="custom-select-options"
+                            class="absolute top-[calc(100%+8px)] left-0 right-0 bg-[#121212] border border-white/10 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 opacity-0 translate-y-4 pointer-events-none z-[100] backdrop-blur-xl"
+                        >
+                            <li
+                                data-value="populares"
+                                class="px-5 py-3.5 text-white/70 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-bg-dark cursor-pointer transition-colors border-b border-white/5"
+                            >
+                                Más Populares
+                            </li>
+                            <li
+                                data-value="price-asc"
+                                class="px-5 py-3.5 text-white/70 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-bg-dark cursor-pointer transition-colors border-b border-white/5"
+                            >
+                                Precio: Menor a Mayor
+                            </li>
+                            <li
+                                data-value="price-desc"
+                                class="px-5 py-3.5 text-white/70 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-bg-dark cursor-pointer transition-colors border-b border-white/5"
+                            >
+                                Precio: Mayor a Menor
+                            </li>
+                            <li
+                                data-value="potency"
+                                class="px-5 py-3.5 text-white/70 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-bg-dark cursor-pointer transition-colors"
+                            >
+                                Máxima Potencia
+                            </li>
+                        </ul>
+                        <input
+                            type="hidden"
                             id="microdosis-sort"
-                            class="appearance-none bg-black/20 border border-white/20 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-full pl-5 pr-10 py-2.5 focus:outline-none focus:border-gold cursor-pointer transition-colors hover:bg-white/5 min-w-[200px]"
-                        >
-                            <option
-                                value="populares"
-                                class="bg-bg-dark text-white"
-                                >Más Populares</option
-                            >
-                            <option
-                                value="price-asc"
-                                class="bg-bg-dark text-white"
-                                >Precio: Menor a Mayor</option
-                            >
-                            <option
-                                value="price-desc"
-                                class="bg-bg-dark text-white"
-                                >Precio: Mayor a Menor</option
-                            >
-                        </select>
-                        <span
-                            class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-white pointer-events-none text-[16px] hidden sm:block"
-                            >expand_more</span
-                        >
+                            value="populares"
+                        />
                     </div>
                 </div>
 
@@ -204,6 +237,7 @@ const microdosingProducts = [
                         microdosingProducts.map((prod) => (
                             <div
                                 data-price={prod.price}
+                                data-potency={prod.potency}
                                 class="product-item bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 p-8 shadow-2xl flex flex-col group hover:-translate-y-2 hover:border-gold/30 transition-all duration-500"
                             >
                                 <div class="relative w-full aspect-square bg-white rounded-2xl overflow-hidden p-6 flex items-center justify-center mb-8 shadow-inner">
@@ -305,54 +339,102 @@ const microdosingProducts = [
                             productData.id ||
                             productData.url?.split("/").pop() ||
                             productData.title
-                                .replace(/\s+/g, "-")
+                                ?.replace(/\s+/g, "-")
                                 .toLowerCase();
                         (window as any).addToCartGlobal({
                             ...productData,
                             id,
                             quantity: 1,
                         });
+                    } else {
+                        console.error("CartDrawer not ready");
+                        if (typeof (window as any).openCart === "function")
+                            (window as any).openCart();
                     }
                 });
             });
 
-            // -- Sorting Logic --
-            const sortSelect = document.getElementById(
+            // -- Custom Select UI Logic --
+            const selectTrigger = document.getElementById(
+                "custom-select-trigger"
+            );
+            const selectOptions = document.getElementById(
+                "custom-select-options"
+            );
+            const selectLabel = document.getElementById("select-label");
+            const sortInput = document.getElementById(
                 "microdosis-sort"
-            ) as HTMLSelectElement;
+            ) as HTMLInputElement;
+            const optionItems = selectOptions?.querySelectorAll("li");
             const gridContainer = document.getElementById("microdosis-grid");
 
-            if (sortSelect && gridContainer) {
-                sortSelect.addEventListener("change", () => {
-                    const products = Array.from(
-                        gridContainer.querySelectorAll(".product-item")
-                    ) as HTMLElement[];
-                    const sortValue = sortSelect.value;
-
-                    products.sort((a, b) => {
-                        const priceA = parseFloat(
-                            a.dataset.price
-                                ?.replace("€", "")
-                                .replace(",", ".") || "0"
-                        );
-                        const priceB = parseFloat(
-                            b.dataset.price
-                                ?.replace("€", "")
-                                .replace(",", ".") || "0"
-                        );
-
-                        if (sortValue === "price-asc") {
-                            return priceA - priceB;
-                        } else if (sortValue === "price-desc") {
-                            return priceB - priceA;
-                        }
-                        // Default to original DOM order or ID based if needed (for "populares" we just leave it for now since we don't have explicit popularity rating, or could sort by a default param)
-                        return 0;
-                    });
-
-                    // Re-append sorted elements
-                    products.forEach((p) => gridContainer.appendChild(p));
+            if (selectTrigger && selectOptions) {
+                selectTrigger.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    selectOptions.classList.toggle("opacity-0");
+                    selectOptions.classList.toggle("translate-y-4");
+                    selectOptions.classList.toggle("pointer-events-none");
                 });
+
+                document.addEventListener("click", () => {
+                    selectOptions.classList.add("opacity-0");
+                    selectOptions.classList.add("translate-y-4");
+                    selectOptions.classList.add("pointer-events-none");
+                });
+
+                optionItems?.forEach((item) => {
+                    item.addEventListener("click", () => {
+                        const val =
+                            item.getAttribute("data-value") || "populares";
+                        if (sortInput) sortInput.value = val;
+                        if (selectLabel)
+                            selectLabel.textContent =
+                                item.textContent?.trim() || "";
+                        applySort();
+                    });
+                });
+            }
+
+            function applySort() {
+                if (!gridContainer || !sortInput) return;
+                const products = Array.from(
+                    gridContainer.querySelectorAll(".product-item")
+                ) as HTMLElement[];
+                const sortValue = sortInput.value;
+
+                products.sort((a, b) => {
+                    if (
+                        sortValue === "price-asc" ||
+                        sortValue === "price-desc"
+                    ) {
+                        const getV = (el: HTMLElement) => {
+                            const raw = el.dataset.price || "0";
+                            return (
+                                parseFloat(
+                                    raw
+                                        .replace(/[^\d.,]/g, "")
+                                        .replace(",", ".")
+                                ) || 0
+                            );
+                        };
+                        const priceA = getV(a);
+                        const priceB = getV(b);
+                        return sortValue === "price-asc"
+                            ? priceA - priceB
+                            : priceB - priceA;
+                    }
+
+                    if (sortValue === "potency") {
+                        const potA = parseInt(a.dataset.potency || "0");
+                        const potB = parseInt(b.dataset.potency || "0");
+                        return potB - potA; // Mayor potencia primero
+                    }
+
+                    return 0;
+                });
+
+                // Re-append sorted elements
+                products.forEach((p) => gridContainer.appendChild(p));
             }
         });
     </script>

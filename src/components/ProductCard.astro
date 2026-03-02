@@ -134,12 +134,17 @@ const imageBg = product.imageBg || "bg-white";
                     const id =
                         productData.id ||
                         productData.url?.split("/").pop() ||
-                        productData.title.replace(/\s+/g, "-").toLowerCase();
+                        productData.title?.replace(/\s+/g, "-").toLowerCase() ||
+                        "product-" + Math.random().toString(36).substr(2, 9);
                     (window as any).addToCartGlobal({
                         ...productData,
                         id,
                         quantity: 1,
                     });
+                } else {
+                    console.error("CartDRAWER not ready");
+                    if (typeof (window as any).openCart === "function")
+                        (window as any).openCart();
                 }
             });
         });

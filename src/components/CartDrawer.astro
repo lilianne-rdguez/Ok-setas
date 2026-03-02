@@ -70,31 +70,42 @@
 <script>
     import { getCart, removeFromCart, updateQuantity, getCartTotal, saveCart, addToCart } from '../utils/cartStore.js';
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const overlay = document.getElementById("cart-drawer-overlay");
-        const drawer = document.getElementById("cart-drawer");
-        const closeBtn = document.getElementById("close-cart");
-        const itemsContainer = document.getElementById("cart-items-container");
-        const totalEl = document.getElementById("cart-total");
-
         // Funciones para abrir y cerrar
         (window as any).openCart = () => {
+            const overlay = document.getElementById("cart-drawer-overlay");
+            const drawer = document.getElementById("cart-drawer");
+            if (!overlay || !drawer) return;
             overlay.classList.remove("hidden");
             // Pequeño delay para animar opacity tras quitar hidden
             setTimeout(() => {
                 overlay.classList.remove("opacity-0");
                 drawer.classList.remove("translate-x-full");
             }, 10);
-            renderCart();
+            (window as any).renderCart();
         };
 
         (window as any).closeCart = () => {
+            const overlay = document.getElementById("cart-drawer-overlay");
+            const drawer = document.getElementById("cart-drawer");
+            if (!overlay || !drawer) return;
             overlay.classList.add("opacity-0");
             drawer.classList.add("translate-x-full");
             setTimeout(() => {
                 overlay.classList.add("hidden");
             }, 300);
         };
+
+        (window as any).addToCartGlobal = (productData: any) => {
+            addToCart(productData, productData.quantity || 1);
+            (window as any).openCart();
+        };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const overlay = document.getElementById("cart-drawer-overlay");
+        const drawer = document.getElementById("cart-drawer");
+        const closeBtn = document.getElementById("close-cart");
+        const itemsContainer = document.getElementById("cart-items-container");
+        const totalEl = document.getElementById("cart-total");
 
         // Listeners apertura desde cualquier boton con la clase
         document.addEventListener('click', (e) => {
@@ -109,8 +120,10 @@
         closeBtn?.addEventListener("click", (window as any).closeCart);
 
         // Render logic
-        const renderCart = () => {
+        (window as any).renderCart = () => {
             const cart = getCart();
+
+            if (!itemsContainer) return;
 
             if (cart.length === 0) {
                 itemsContainer.innerHTML = `
@@ -120,7 +133,7 @@
                     </div>
                 `;
             } else {
-                itemsContainer.innerHTML = cart.map(item => `
+                itemsContainer.innerHTML = cart.map((item: any) => `
                     <div class="flex gap-4 bg-white/5 border border-white/10 p-4 rounded-xl relative group">
                         <!-- Img -->
                         <div class="w-16 h-16 bg-white rounded-lg p-2 flex-shrink-0 flex items-center justify-center">
@@ -152,33 +165,30 @@
 
             // Update Total
             const total = getCartTotal();
-            totalEl.innerText = total.toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
+            if (totalEl) {
+                totalEl.innerText = total.toLocaleString('es-ES', { minimumFractionDigits: 2 }) + ' €';
+            }
         };
 
         // Métodos globales para usar inline onclick
-        (window as any).updateCartItem = (id, qnty) => {
+        (window as any).updateCartItem = (id: string, qnty: number) => {
             updateQuantity(id, qnty);
         };
         
-        (window as any).removeCartItem = (id) => {
+        (window as any).removeCartItem = (id: string) => {
             removeFromCart(id);
-        };
-
-        (window as any).addToCartGlobal = (productData) => {
-            addToCart(productData, productData.quantity || 1);
-            (window as any).openCart();
         };
 
         // Escuchar cambios
         window.addEventListener('cart-updated', () => {
-            renderCart();
+            (window as any).renderCart();
             updateCartBadge();
         });
 
         // Badge en el header
         const updateCartBadge = () => {
             const cart = getCart();
-            const totalItems = cart.reduce((acc, it) => acc + it.quantity, 0);
+            const totalItems = cart.reduce((acc: number, it: any) => acc + it.quantity, 0);
             
             document.querySelectorAll('.cart-badge').forEach(badge => {
                 badge.textContent = totalItems.toString();

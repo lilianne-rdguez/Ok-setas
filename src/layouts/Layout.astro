@@ -87,7 +87,8 @@ const { title } = Astro.props;
             input,
             textarea,
             [role="button"],
-            .cursor-pointer {
+            .cursor-pointer,
+            li {
                 cursor: none !important;
             }
 
@@ -167,7 +168,7 @@ const { title } = Astro.props;
 
                 const cursor = document.getElementById("customCursor");
                 const interactiveElements = document.querySelectorAll(
-                    'a, button, input, select, textarea, [role="button"], .cursor-pointer'
+                    'a, button, input, select, textarea, [role="button"], .cursor-pointer, li'
                 );
 
                 document.addEventListener("mousemove", (e) => {

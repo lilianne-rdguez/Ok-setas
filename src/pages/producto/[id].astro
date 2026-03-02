@@ -610,17 +610,24 @@ const {
 
             // Integración Carrito
             const btnAddToCart = document.getElementById("btn-add-to-cart");
-            if (btnAddToCart && (window as any).addToCartGlobal) {
+            if (btnAddToCart) {
                 btnAddToCart.addEventListener("click", () => {
                     const productData = JSON.parse(
                         btnAddToCart.dataset.product || "{}"
                     );
                     const quantity =
                         parseInt(qtyInput ? qtyInput.value : "1") || 1;
-                    (window as any).addToCartGlobal({
-                        ...productData,
-                        quantity,
-                    });
+
+                    if ((window as any).addToCartGlobal) {
+                        (window as any).addToCartGlobal({
+                            ...productData,
+                            quantity,
+                        });
+                    } else {
+                        console.error("Cart not ready");
+                        if ((window as any).openCart)
+                            (window as any).openCart();
+                    }
                 });
             }
 

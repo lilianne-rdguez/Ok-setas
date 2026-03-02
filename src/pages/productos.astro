@@ -13,6 +13,7 @@ const categories = [
                 price: "27,98 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
                 url: "/producto/2-1-pack-microdosis",
+                potency: 2,
             },
             {
                 id: "3-1-pack",
@@ -20,6 +21,7 @@ const categories = [
                 price: "41,97 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
                 url: "/producto/3-1-pack-microdosis",
+                potency: 2,
             },
             {
                 id: "4-2-pack",
@@ -27,6 +29,7 @@ const categories = [
                 price: "55,96 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
                 url: "/producto/4-2-pack-microdosis",
+                potency: 2,
             },
             {
                 id: "5-3-pack",
@@ -34,6 +37,7 @@ const categories = [
                 price: "69,95 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/5-3pack-de-microdosis-de-trufas-magicas.png",
                 url: "/producto/5-3-pack-microdosis",
+                potency: 2,
             },
         ],
     },
@@ -47,6 +51,7 @@ const categories = [
                 price: "16,95 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/trufas-magicas-psilocybe-atlantis-500x500.jpg",
                 url: "/producto/trufas-atlantis",
+                potency: 3,
             },
             {
                 id: "trufas-hollandia",
@@ -54,6 +59,7 @@ const categories = [
                 price: "21,50 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2022/04/trufas-magicas-psilocybe-hollandia-500x500.jpg",
                 url: "/producto/trufas-hollandia",
+                potency: 4,
             },
             {
                 id: "trufas-cattaleya",
@@ -61,6 +67,7 @@ const categories = [
                 price: "22,95 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/trufas-magicas-psilocybe-cattaleya-1-500x500.jpg",
                 url: "/producto/trufas-cattaleya",
+                potency: 5,
             },
         ],
     },
@@ -74,6 +81,7 @@ const categories = [
                 price: "36,00 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/kit-de-cultivo-de-setas-psilocybe-cubensis-orissa-india-500x500.jpg",
                 url: "/producto/kit-orissa-india",
+                potency: 5,
             },
             {
                 id: "kit-treasure",
@@ -81,6 +89,7 @@ const categories = [
                 price: "36,00 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/kit-de-cultivo-de-setas-psilocybe-cubensis-treasure-coast-500x500.jpg",
                 url: "/producto/kit-treasure-coast",
+                potency: 5,
             },
             {
                 id: "kit-vietnam",
@@ -88,6 +97,7 @@ const categories = [
                 price: "36,00 €",
                 image: "https://ximoe124.sg-host.com/wp-content/uploads/2026/01/kit-de-cultivo-de-setas-psilocybe-cubensis-vietnam-500x500.jpg",
                 url: "/producto/kit-vietnam",
+                potency: 5,
             },
         ],
     },
@@ -122,14 +132,29 @@ const categories = [
                         <button data-filter="kits" class="filter-btn border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors cursor-pointer">Kits</button>
                     </div>
                     
-                    <div class="relative min-w-[200px]">
-                        <select id="sort-select" class="w-full appearance-none bg-black/20 border border-white/20 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-full pl-5 pr-10 py-2.5 focus:outline-none focus:border-gold cursor-pointer transition-colors hover:bg-white/5 cursor-pointer relative z-20">
-                            <option value="featured" class="bg-bg-dark text-white">Recomendados</option>
-                            <option value="price-asc" class="bg-bg-dark text-white">Precio: Menor a Mayor</option>
-                            <option value="price-desc" class="bg-bg-dark text-white">Precio: Mayor a Menor</option>
-                            <option value="potency" class="bg-bg-dark text-white">Potencia</option>
-                        </select>
-                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-white pointer-events-none text-[16px]">expand_more</span>
+                    <!-- Custom Potency/Price Dropdown -->
+                    <div class="relative min-w-[240px]" id="custom-select-wrapper">
+                        <label class="absolute -top-6 left-1 text-[9px] uppercase tracking-[0.2em] text-gray-500 font-bold">Ordenar por</label>
+                        <button id="custom-select-trigger" class="w-full bg-white/5 backdrop-blur-md border border-white/10 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-xl pl-5 pr-10 py-3.5 focus:outline-none focus:border-gold/50 cursor-pointer transition-all hover:bg-white/10 hover:border-white/20 flex items-center justify-between group shadow-lg">
+                            <span id="select-label">Recomendados</span>
+                            <span class="material-symbols-outlined text-gold group-hover:rotate-180 transition-transform duration-500 text-[18px]">expand_more</span>
+                        </button>
+                        
+                        <ul id="custom-select-options" class="absolute top-[calc(100%+8px)] left-0 right-0 bg-[#121212] border border-white/10 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 opacity-0 translate-y-4 pointer-events-none z-[100] backdrop-blur-xl">
+                            <li data-value="featured" class="px-5 py-3.5 text-white/70 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-bg-dark cursor-pointer transition-colors border-b border-white/5 flex items-center gap-3">
+                                Recomendados
+                            </li>
+                            <li data-value="price-asc" class="px-5 py-3.5 text-white/70 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-bg-dark cursor-pointer transition-colors border-b border-white/5 flex items-center gap-3">
+                                Precio: Menor a Mayor
+                            </li>
+                            <li data-value="price-desc" class="px-5 py-3.5 text-white/70 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-bg-dark cursor-pointer transition-colors border-b border-white/5 flex items-center gap-3">
+                                Precio: Mayor a Menor
+                            </li>
+                            <li data-value="potency" class="px-5 py-3.5 text-white/70 text-[10px] sm:text-xs uppercase tracking-widest font-bold hover:bg-gold hover:text-bg-dark cursor-pointer transition-colors flex items-center gap-3">
+                                Máxima Potencia
+                            </li>
+                        </ul>
+                        <input type="hidden" id="sort-select" value="featured" />
                     </div>
                 </div>
             </div>
@@ -145,7 +170,11 @@ const categories = [
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 product-grid">
                         {category.products.map((product) => (
-                            <div data-price={product.price} class="product-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:border-gold/30 transition-all duration-300 flex flex-col group">
+                            <div 
+                                class="product-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:border-gold/30 transition-all duration-300 flex flex-col group"
+                                data-price={product.price}
+                                data-potency={product.potency}
+                            >
                                 <a href={product.url} class="block relative w-full aspect-square bg-white p-6 flex items-center justify-center overflow-hidden">
                                     <img 
                                         src={product.image} 
@@ -262,25 +291,58 @@ const categories = [
                     
                     if ((window as any).addToCartGlobal) {
                         (window as any).addToCartGlobal({ ...productData, quantity });
+                    } else {
+                        console.error('CartDrawer not ready');
+                        if (typeof (window as any).openCart === 'function') (window as any).openCart();
                     }
                 });
             });
 
             // -- Lógica de Filtrado y Ordenación
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
-            const categorySections = document.querySelectorAll('.category-section');
+            const filterBtns = document.querySelectorAll(".filter-btn");
+            const sortSelectInput = document.getElementById("sort-select") as HTMLInputElement;
+            const categorySections = document.querySelectorAll(".category-section");
             const urlParams = new URLSearchParams(window.location.search);
-            const searchQuery = (urlParams.get('q') || '').toLowerCase();
-            
+            const searchQuery = (urlParams.get("q") || "").toLowerCase();
+
+            // Custom Select UI Logic
+            const selectTrigger = document.getElementById("custom-select-trigger");
+            const selectOptions = document.getElementById("custom-select-options");
+            const selectLabel = document.getElementById("select-label");
+            const optionItems = selectOptions?.querySelectorAll("li");
+
+            if (selectTrigger && selectOptions) {
+                selectTrigger.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    selectOptions.classList.toggle("opacity-0");
+                    selectOptions.classList.toggle("translate-y-2");
+                    selectOptions.classList.toggle("pointer-events-none");
+                });
+
+                document.addEventListener("click", () => {
+                    selectOptions.classList.add("opacity-0");
+                    selectOptions.classList.add("translate-y-2");
+                    selectOptions.classList.add("pointer-events-none");
+                });
+
+                optionItems?.forEach((item) => {
+                    item.addEventListener("click", () => {
+                        const val = item.getAttribute("data-value") || "featured";
+                        if (sortSelectInput) sortSelectInput.value = val;
+                        if (selectLabel) selectLabel.textContent = item.textContent || "";
+                        updateView();
+                    });
+                });
+            }
+
             if (searchQuery) {
-                const headerP = document.querySelector('.animate-fade-in-up p');
+                const headerP = document.querySelector(".animate-fade-in-up p");
                 if (headerP) {
                     headerP.innerHTML = `Resultados de tu búsqueda: <strong class="text-gold">${searchQuery}</strong>`;
                 }
             }
 
-            let currentFilter = 'all';
+            let currentFilter = "all";
 
             // Actualizar vista
             const updateView = () => {
@@ -288,79 +350,97 @@ const categories = [
 
                 categorySections.forEach((section: any) => {
                     const categoryName = section.dataset.category.toLowerCase();
-                    const productsInSection = section.querySelectorAll('.product-item');
+                    const productsInSection = section.querySelectorAll(".product-item");
                     let visibleCount = 0;
 
-                    // Si el filtro es "all" o coincide con la sección actual, la sección es potencialmente visible
-                    const isSectionVisible = currentFilter === 'all' || categoryName.includes(currentFilter);
+                    const isSectionVisible =
+                        currentFilter === "all" ||
+                        categoryName.includes(currentFilter);
 
-                    // Filtrar productos
                     productsInSection.forEach((product: any) => {
-                        const productTitle = (product.querySelector('h3')?.textContent || '').toLowerCase();
-                        const matchesFilter = currentFilter === 'all' || categoryName.includes(currentFilter);
-                        const matchesSearch = !searchQuery || productTitle.includes(searchQuery) || categoryName.includes(searchQuery);
+                        const productTitle = (
+                            product.querySelector("h3")?.textContent || ""
+                        ).toLowerCase();
+                        const matchesFilter =
+                            currentFilter === "all" ||
+                            categoryName.includes(currentFilter);
+                        const matchesSearch =
+                            !searchQuery ||
+                            productTitle.includes(searchQuery) ||
+                            categoryName.includes(searchQuery);
 
                         if (matchesFilter && matchesSearch) {
-                            product.style.display = 'flex';
+                            product.style.display = "flex";
                             visibleCount++;
                         } else {
-                            product.style.display = 'none';
+                            product.style.display = "none";
                         }
                     });
 
-                    // Si no hay productos visibles (o la sección entera no coincide), ocultar toda la categoría
                     if (visibleCount > 0 && isSectionVisible) {
-                         section.style.display = 'block';
-                         hasAnyVisible = true;
+                        section.style.display = "block";
+                        hasAnyVisible = true;
                     } else {
-                         section.style.display = 'none';
+                        section.style.display = "none";
                     }
-                     
+
                     // Ordenación dentro de la sección visible
-                    if (visibleCount > 0 && isSectionVisible && sortSelect) {
-                         const container = section.querySelector('.product-grid');
-                         if(container) {
-                             const productsArr = Array.from(productsInSection) as HTMLElement[];
-                             const sortValue = sortSelect.value;
+                    const sortValue = sortSelectInput ? sortSelectInput.value : "featured";
+                    if (visibleCount > 0 && isSectionVisible) {
+                        const container = section.querySelector(".product-grid");
+                        if (container) {
+                            const productsArr = Array.from(
+                                productsInSection
+                            ) as HTMLElement[];
 
-                             productsArr.sort((a, b) => {
-                                  const priceA = parseFloat(a.dataset.price?.replace('€', '').replace(',', '.') || '0');
-                                  const priceB = parseFloat(b.dataset.price?.replace('€', '').replace(',', '.') || '0');
+                            productsArr.sort((a, b) => {
+                                if (sortValue === "price-asc" || sortValue === "price-desc") {
+                                    const getV = (el: HTMLElement) => {
+                                        const raw = el.dataset.price || "0";
+                                        return parseFloat(raw.replace(/[^\d.,]/g, "").replace(",", ".")) || 0;
+                                    };
+                                    const pA = getV(a);
+                                    const pB = getV(b);
+                                    return sortValue === "price-asc" ? pA - pB : pB - pA;
+                                }
 
-                                  if (sortValue === 'price-asc') {
-                                       return priceA - priceB;
-                                  } else if (sortValue === 'price-desc') {
-                                       return priceB - priceA;
-                                  }
-                                  // featured or potency can just stay as they are defined in DOM order
-                                  return 0; // Default order
-                             });
+                                if (sortValue === "potency") {
+                                    const potA = parseInt(a.dataset.potency || "0");
+                                    const potB = parseInt(b.dataset.potency || "0");
+                                    return potB - potA; // Mayor potencia primero
+                                }
 
-                             // Re-append to DOM in sorted order
-                             productsArr.forEach(p => container.appendChild(p));
-                         }
+                                return 0;
+                            });
+
+                            // Re-append to DOM in sorted order
+                            productsArr.forEach((p) => container.appendChild(p));
+                        }
                     }
                 });
 
                 // Si por la búsqueda nada se ve, mostramos un mensaje
-                let emptyMsg = document.getElementById('search-empty-msg');
+                let emptyMsg = document.getElementById("search-empty-msg");
                 if (!hasAnyVisible) {
                     if (!emptyMsg) {
-                        emptyMsg = document.createElement('div');
-                        emptyMsg.id = 'search-empty-msg';
-                        emptyMsg.className = 'col-span-1 md:col-span-2 lg:col-span-3 text-center py-24 px-4 bg-white/5 border border-white/10 rounded-3xl';
+                        emptyMsg = document.createElement("div");
+                        emptyMsg.id = "search-empty-msg";
+                        emptyMsg.className =
+                            "col-span-1 md:col-span-2 lg:col-span-3 text-center py-24 px-4 bg-white/5 border border-white/10 rounded-3xl";
                         emptyMsg.innerHTML = `
-                            <span class="material-symbols-outlined text-6xl text-gold/50 mb-4 inline-block">search_off</span>
-                            <h3 class="text-2xl font-display font-bold text-white mb-2">No se encontraron productos</h3>
-                            <p class="text-gray-400">Lo sentimos, no hay productos que coincidan con "${searchQuery}".</p>
-                            <button onclick="window.location.href='/productos'" class="mt-6 font-mono bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-bg-dark px-6 py-3 rounded-lg font-bold transition-all text-sm uppercase tracking-widest inline-flex items-center gap-2">
-                                <span class="material-symbols-outlined text-sm">restart_alt</span> Ver todo el catálogo
-                            </button>
-                        `;
-                        const mainContainer = document.querySelector('section#comprar > .max-w-7xl');
+                             <span class="material-symbols-outlined text-6xl text-gold/50 mb-4 inline-block">search_off</span>
+                             <h3 class="text-2xl font-display font-bold text-white mb-2">No se encontraron productos</h3>
+                             <p class="text-gray-400">Lo sentimos, no hay productos que coincidan con "${searchQuery}".</p>
+                             <button onclick="window.location.href='/productos'" class="mt-6 font-mono bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-bg-dark px-6 py-3 rounded-lg font-bold transition-all text-sm uppercase tracking-widest inline-flex items-center gap-2">
+                                 <span class="material-symbols-outlined text-sm">restart_alt</span> Ver todo el catálogo
+                             </button>
+                         `;
+                        const mainContainer = document.querySelector(
+                            "section#comprar > .max-w-7xl"
+                        );
                         if (mainContainer) mainContainer.appendChild(emptyMsg);
                     } else {
-                        emptyMsg.style.display = 'block';
+                        emptyMsg.style.display = "block";
                     }
                 } else if (emptyMsg) {
                     emptyMsg.style.display = 'none';
@@ -383,13 +463,6 @@ const categories = [
                     updateView();
                 });
             });
-
-            // Evento selección de ordenación
-            if (sortSelect) {
-                 sortSelect.addEventListener('change', () => {
-                      updateView();
-                 });
-            }
 
             // Ejecución Inicial para aplicar los sort/filters predeterminados o search query
             updateView();
