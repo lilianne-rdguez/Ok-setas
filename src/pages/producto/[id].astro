@@ -341,10 +341,10 @@ const {
                                 class="flex-1 bg-[#A03D45] text-white font-bold h-14 rounded-xl hover:bg-red-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(160,61,69,0.3)] hover:shadow-[0_4px_30px_rgba(160,61,69,0.6)] uppercase tracking-widest text-[10px] sm:text-xs relative overflow-hidden group px-4 w-full"
                             >
                                 <span
-                                    class="relative z-10 flex items-center gap-2"
+                                    class="relative z-10 flex items-center justify-center gap-4 sm:gap-6"
                                 >
                                     <span
-                                        class="material-symbols-outlined xl:text-lg text-sm"
+                                        class="material-symbols-outlined xl:text-[22px] text-lg"
                                         >local_mall</span
                                     > Añadir al carrito
                                 </span>
@@ -409,35 +409,37 @@ const {
                 {
                     shortDescription && (
                         <div class="mb-16 space-y-4 bg-white/5 border border-white/10 p-8 rounded-[2rem] shadow-xl">
-                            {shortDescription.map((item, index) => {
-                                if (item === "Más" || item === "Aviso:") {
-                                    return (
-                                        <h3 class="font-bold text-xl text-white font-display uppercase tracking-wider mb-2">
-                                            {item}
-                                        </h3>
-                                    );
-                                }
-                                if (item.startsWith("Ingredientes:")) {
-                                    return (
-                                        <div class="mt-8 pt-8 border-t border-white/10">
-                                            <h3 class="font-bold text-lg text-white font-display uppercase tracking-wider mb-2">
-                                                Ingredientes
+                            {shortDescription.map(
+                                (item: string, index: number) => {
+                                    if (item === "Más" || item === "Aviso:") {
+                                        return (
+                                            <h3 class="font-bold text-xl text-white font-display uppercase tracking-wider mb-2">
+                                                {item}
                                             </h3>
-                                            <p class="text-gray-400 font-light text-base">
-                                                {item.replace(
-                                                    "Ingredientes: ",
-                                                    ""
-                                                )}
-                                            </p>
-                                        </div>
+                                        );
+                                    }
+                                    if (item.startsWith("Ingredientes:")) {
+                                        return (
+                                            <div class="mt-8 pt-8 border-t border-white/10">
+                                                <h3 class="font-bold text-lg text-white font-display uppercase tracking-wider mb-2">
+                                                    Ingredientes
+                                                </h3>
+                                                <p class="text-gray-400 font-light text-base">
+                                                    {item.replace(
+                                                        "Ingredientes: ",
+                                                        ""
+                                                    )}
+                                                </p>
+                                            </div>
+                                        );
+                                    }
+                                    return (
+                                        <p class="text-gray-400 font-light text-[15px] leading-relaxed">
+                                            {item}
+                                        </p>
                                     );
                                 }
-                                return (
-                                    <p class="text-gray-400 font-light text-[15px] leading-relaxed">
-                                        {item}
-                                    </p>
-                                );
-                            })}
+                            )}
                         </div>
                     )
                 }
@@ -468,7 +470,7 @@ const {
                     class="space-y-6 text-gray-300 font-light leading-relaxed block animate-fade-in-up"
                 >
                     {
-                        description.map((paragraph, index) => {
+                        description.map((paragraph: string, index: number) => {
                             const isNotice =
                                 index === description.length - 1 ||
                                 paragraph.startsWith("TODOS NUESTROS");
@@ -548,7 +550,7 @@ const {
                 >
                     <!-- Dummy items simulando productos relacionados para rellenar visualmente -->
                     {
-                        related.map((rel) => (
+                        related.map((rel: any) => (
                             <a
                                 href={rel.url}
                                 class="bg-white/5 rounded-[2rem] border border-white/5 p-8 flex flex-col items-center group cursor-pointer hover:border-gold/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
@@ -581,25 +583,27 @@ const {
             // Lógica de Cantidad +/-
             const btnMinus = document.getElementById("btn-minus");
             const btnPlus = document.getElementById("btn-plus");
-            const qtyInput = document.getElementById("qty-input");
+            const qtyInput = document.getElementById(
+                "qty-input"
+            ) as HTMLInputElement | null;
 
             if (btnMinus && btnPlus && qtyInput) {
                 btnMinus.addEventListener("click", () => {
                     let currentValue = parseInt(qtyInput.value) || 1;
                     if (currentValue > 1) {
-                        qtyInput.value = currentValue - 1;
+                        qtyInput.value = (currentValue - 1).toString();
                     }
                 });
 
                 btnPlus.addEventListener("click", () => {
                     let currentValue = parseInt(qtyInput.value) || 0;
-                    qtyInput.value = currentValue + 1;
+                    qtyInput.value = (currentValue + 1).toString();
                 });
 
                 qtyInput.addEventListener("change", () => {
                     let currentValue = parseInt(qtyInput.value);
                     if (isNaN(currentValue) || currentValue < 1) {
-                        qtyInput.value = 1;
+                        qtyInput.value = "1";
                     }
                 });
             }
@@ -609,7 +613,7 @@ const {
             if (btnAddToCart && (window as any).addToCartGlobal) {
                 btnAddToCart.addEventListener("click", () => {
                     const productData = JSON.parse(
-                        btnAddToCart.dataset.product
+                        btnAddToCart.dataset.product || "{}"
                     );
                     const quantity =
                         parseInt(qtyInput ? qtyInput.value : "1") || 1;
