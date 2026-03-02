@@ -138,9 +138,10 @@ const trufasProducts = [
                     >
                         3 productos encontrados
                     </p>
-                    <div class="flex items-center gap-4">
+                    <div class="relative min-w-[200px]">
                         <select
-                            class="appearance-none bg-black/20 border border-white/20 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-full pl-5 pr-10 py-2.5 focus:outline-none focus:border-gold cursor-pointer transition-colors hover:bg-white/5 min-w-[200px]"
+                            id="trufas-sort"
+                            class="appearance-none bg-black/20 border border-white/20 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-full w-full pl-5 pr-10 py-2.5 focus:outline-none focus:border-gold cursor-pointer transition-colors hover:bg-white/5 relative z-20"
                         >
                             <option
                                 value="populares"
@@ -164,18 +165,22 @@ const trufasProducts = [
                             >
                         </select>
                         <span
-                            class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-white pointer-events-none text-[16px] hidden sm:block"
+                            class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-white pointer-events-none text-[16px] z-20"
                             >expand_more</span
                         >
                     </div>
                 </div>
 
                 <div
+                    id="trufas-grid"
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10"
                 >
                     {
                         trufasProducts.map((prod) => (
-                            <div class="bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 p-8 shadow-2xl flex flex-col group hover:-translate-y-2 hover:border-gold/30 transition-all duration-500">
+                            <div
+                                data-price={prod.price}
+                                class="product-item bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 p-8 shadow-2xl flex flex-col group hover:-translate-y-2 hover:border-gold/30 transition-all duration-500"
+                            >
                                 <div class="relative w-full aspect-square bg-white rounded-2xl overflow-hidden p-6 flex items-center justify-center mb-8 shadow-inner">
                                     {prod.badge && (
                                         <div class="absolute top-3 left-3 bg-gold text-bg-dark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest z-20 shadow-lg">
@@ -285,6 +290,44 @@ const trufasProducts = [
                     }
                 });
             });
+
+            // -- Sorting Logic --
+            const sortSelect = document.getElementById(
+                "trufas-sort"
+            ) as HTMLSelectElement;
+            const gridContainer = document.getElementById("trufas-grid");
+
+            if (sortSelect && gridContainer) {
+                sortSelect.addEventListener("change", () => {
+                    const products = Array.from(
+                        gridContainer.querySelectorAll(".product-item")
+                    ) as HTMLElement[];
+                    const sortValue = sortSelect.value;
+
+                    products.sort((a, b) => {
+                        const priceA = parseFloat(
+                            a.dataset.price
+                                ?.replace("€", "")
+                                .replace(",", ".") || "0"
+                        );
+                        const priceB = parseFloat(
+                            b.dataset.price
+                                ?.replace("€", "")
+                                .replace(",", ".") || "0"
+                        );
+
+                        if (sortValue === "price-asc") {
+                            return priceA - priceB;
+                        } else if (sortValue === "price-desc") {
+                            return priceB - priceA;
+                        }
+                        return 0;
+                    });
+
+                    // Re-append sorted elements
+                    products.forEach((p) => gridContainer.appendChild(p));
+                });
+            }
         });
     </script>
 </Layout>

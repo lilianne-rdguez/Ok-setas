@@ -116,14 +116,14 @@ const categories = [
                 <div class="flex flex-wrap items-center justify-center lg:justify-between gap-4 border-y border-white/10 py-6">
                     <div class="flex flex-wrap items-center justify-center gap-3">
                         <span class="text-xs uppercase tracking-widest text-gray-500 font-bold mr-2 hidden md:block">Filtrar:</span>
-                        <button class="bg-gold text-bg-dark font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:bg-white transition-colors">Todos</button>
-                        <button class="border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors">Microdosis</button>
-                        <button class="border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors">Trufas</button>
-                        <button class="border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors">Kits</button>
+                        <button data-filter="all" class="filter-btn bg-gold text-bg-dark font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:bg-white transition-colors cursor-pointer">Todos</button>
+                        <button data-filter="microdosis" class="filter-btn border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors cursor-pointer">Microdosis</button>
+                        <button data-filter="trufas" class="filter-btn border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors cursor-pointer">Trufas</button>
+                        <button data-filter="kits" class="filter-btn border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors cursor-pointer">Kits</button>
                     </div>
                     
                     <div class="relative min-w-[200px]">
-                        <select class="w-full appearance-none bg-black/20 border border-white/20 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-full pl-5 pr-10 py-2.5 focus:outline-none focus:border-gold cursor-pointer transition-colors hover:bg-white/5">
+                        <select id="sort-select" class="w-full appearance-none bg-black/20 border border-white/20 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-full pl-5 pr-10 py-2.5 focus:outline-none focus:border-gold cursor-pointer transition-colors hover:bg-white/5 cursor-pointer relative z-20">
                             <option value="featured" class="bg-bg-dark text-white">Recomendados</option>
                             <option value="price-asc" class="bg-bg-dark text-white">Precio: Menor a Mayor</option>
                             <option value="price-desc" class="bg-bg-dark text-white">Precio: Mayor a Menor</option>
@@ -135,7 +135,7 @@ const categories = [
             </div>
 
             {categories.map((category) => (
-                <section class="mb-24">
+                <section class="mb-24 category-section" data-category={category.name}>
                     <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-6">
                         <div>
                             <h2 class="font-display text-3xl font-bold text-white uppercase tracking-wider mb-2">{category.name}</h2>
@@ -143,9 +143,9 @@ const categories = [
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 product-grid">
                         {category.products.map((product) => (
-                            <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:border-gold/30 transition-all duration-300 flex flex-col group">
+                            <div data-price={product.price} class="product-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:border-gold/30 transition-all duration-300 flex flex-col group">
                                 <a href={product.url} class="block relative w-full aspect-square bg-white p-6 flex items-center justify-center overflow-hidden">
                                     <img 
                                         src={product.image} 
@@ -177,7 +177,7 @@ const categories = [
                                                 id={`qty-${product.id}`}
                                                 min="1" 
                                                 value="1" 
-                                                class="flex-1 h-full text-center bg-transparent border-x border-white/20 text-white font-mono font-bold text-base outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none min-w-0"
+                                                class="qty-input flex-1 h-full text-center bg-transparent border-x border-white/20 text-white font-mono font-bold text-base outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none min-w-0 pointer-events-auto"
                                             />
                                             <button 
                                                 class="btn-plus-list hover:bg-white/10 text-gold transition-colors w-12 h-full flex items-center justify-center font-bold"
@@ -212,6 +212,7 @@ const categories = [
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // -- Controles de cantidad
             const minusBtns = document.querySelectorAll('.btn-minus-list');
             const plusBtns = document.querySelectorAll('.btn-plus-list');
 
@@ -238,7 +239,7 @@ const categories = [
             });
 
             // Restricción general para los inputs numéricos manuales
-            const inputs = document.querySelectorAll('input[type="number"]');
+            const inputs = document.querySelectorAll('.qty-input');
             inputs.forEach(input => {
                 input.addEventListener('change', (e) => {
                     const target = e.target as HTMLInputElement;
@@ -249,7 +250,7 @@ const categories = [
                 });
             });
 
-            // Añadir al carrito global
+            // -- Añadir al carrito global
             const addBtns = document.querySelectorAll('.btn-add-to-cart-list');
             addBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
@@ -264,6 +265,112 @@ const categories = [
                     }
                 });
             });
+
+            // -- Lógica de Filtrado y Ordenación
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+            const categorySections = document.querySelectorAll('.category-section');
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = (urlParams.get('q') || '').toLowerCase();
+            
+            if (searchQuery) {
+                const headerP = document.querySelector('.animate-fade-in-up p');
+                if (headerP) {
+                    headerP.innerHTML = `Resultados de tu búsqueda: <strong class="text-gold">${searchQuery}</strong>`;
+                }
+            }
+
+            let currentFilter = 'all';
+
+            // Actualizar vista
+            const updateView = () => {
+                let hasAnyVisible = false;
+
+                categorySections.forEach((section: any) => {
+                    const categoryName = section.dataset.category.toLowerCase();
+                    const productsInSection = section.querySelectorAll('.product-item');
+                    let visibleCount = 0;
+
+                    // Si el filtro es "all" o coincide con la sección actual, la sección es potencialmente visible
+                    const isSectionVisible = currentFilter === 'all' || categoryName.includes(currentFilter);
+
+                    // Filtrar productos
+                    productsInSection.forEach((product: any) => {
+                        const productTitle = (product.querySelector('h3')?.textContent || '').toLowerCase();
+                        const matchesFilter = currentFilter === 'all' || categoryName.includes(currentFilter);
+                        const matchesSearch = !searchQuery || productTitle.includes(searchQuery) || categoryName.includes(searchQuery);
+
+                        if (matchesFilter && matchesSearch) {
+                            product.style.display = 'flex';
+                            visibleCount++;
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+
+                    // Si no hay productos visibles (o la sección entera no coincide), ocultar toda la categoría
+                    if (visibleCount > 0 && isSectionVisible) {
+                         section.style.display = 'block';
+                         hasAnyVisible = true;
+                    } else {
+                         section.style.display = 'none';
+                    }
+                     
+                    // Ordenación dentro de la sección visible
+                    if (visibleCount > 0 && isSectionVisible && sortSelect) {
+                         const container = section.querySelector('.product-grid');
+                         if(container) {
+                             const productsArr = Array.from(productsInSection) as HTMLElement[];
+                             const sortValue = sortSelect.value;
+
+                             productsArr.sort((a, b) => {
+                                  const priceA = parseFloat(a.dataset.price?.replace('€', '').replace(',', '.') || '0');
+                                  const priceB = parseFloat(b.dataset.price?.replace('€', '').replace(',', '.') || '0');
+
+                                  if (sortValue === 'price-asc') {
+                                       return priceA - priceB;
+                                  } else if (sortValue === 'price-desc') {
+                                       return priceB - priceA;
+                                  }
+                                  // featured or potency can just stay as they are defined in DOM order
+                                  return 0; // Default order
+                             });
+
+                             // Re-append to DOM in sorted order
+                             productsArr.forEach(p => container.appendChild(p));
+                         }
+                    }
+                });
+
+                // Si por la búsqueda nada se ve, podríamos mostrar aquí un mensaje central "No hay productos que coincidan".
+            };
+
+            // Eventos de botones
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Update active styling
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-gold', 'text-bg-dark');
+                        b.classList.add('border', 'border-white/20', 'text-white');
+                    });
+                    const targetBtn = e.currentTarget as HTMLElement;
+                    targetBtn.classList.remove('border', 'border-white/20', 'text-white');
+                    targetBtn.classList.add('bg-gold', 'text-bg-dark');
+
+                    currentFilter = targetBtn.dataset.filter || 'all';
+                    updateView();
+                });
+            });
+
+            // Evento selección de ordenación
+            if (sortSelect) {
+                 sortSelect.addEventListener('change', () => {
+                      updateView();
+                 });
+            }
+
+            // Ejecución Inicial para aplicar los sort/filters predeterminados o search query
+            updateView();
         });
     </script>
 </Layout>

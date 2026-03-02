@@ -85,11 +85,15 @@ const { title } = Astro.props;
             a,
             button,
             input,
-            select,
             textarea,
             [role="button"],
             .cursor-pointer {
                 cursor: none !important;
+            }
+
+            select,
+            option {
+                cursor: pointer !important;
             }
 
             .magical-cursor {
@@ -135,6 +139,7 @@ const { title } = Astro.props;
                 button,
                 input,
                 select,
+                option,
                 textarea,
                 [role="button"] {
                     cursor: auto !important;

@@ -65,7 +65,7 @@
                     <input
                         type="text"
                         placeholder="Buscar..."
-                        class="bg-black/20 border border-white/20 text-white text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors w-40 lg:w-56 placeholder:text-gray-300 backdrop-blur-sm shadow-inner"
+                        class="search-input bg-black/20 border border-white/20 text-white text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors w-40 lg:w-56 placeholder:text-gray-300 backdrop-blur-sm shadow-inner"
                     />
                 </div>
 
@@ -128,7 +128,7 @@
             <input
                 type="text"
                 placeholder="Buscar..."
-                class="w-full bg-black/20 border border-white/20 text-white text-sm rounded-full pl-10 pr-4 py-3 focus:outline-none focus:border-gold transition-colors placeholder:text-gray-300"
+                class="search-input w-full bg-black/20 border border-white/20 text-white text-sm rounded-full pl-10 pr-4 py-3 focus:outline-none focus:border-gold transition-colors placeholder:text-gray-300"
             />
         </div>
         <a
@@ -180,5 +180,17 @@
                     : "close";
             });
         }
+
+        // Logic for search bar
+        const searchInputs = document.querySelectorAll(".search-input");
+        searchInputs.forEach((input) => {
+            input.addEventListener("keypress", (e: any) => {
+                if (e.key === "Enter" && e.target.value.trim() !== "") {
+                    window.location.href = `/productos?q=${encodeURIComponent(
+                        e.target.value.trim()
+                    )}`;
+                }
+            });
+        });
     });
 </script>
