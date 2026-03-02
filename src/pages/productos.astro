@@ -108,9 +108,30 @@ const categories = [
                 <span class="text-gold font-bold tracking-widest uppercase text-xs mb-2 block">Catálogo Completo</span>
                 <h1 class="font-display text-4xl md:text-5xl text-white font-bold uppercase tracking-tight mb-4">Nuestros Productos</h1>
                 <div class="h-1 w-16 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6"></div>
-                <p class="text-gray-400 font-light text-lg max-w-2xl mx-auto">
+                <p class="text-gray-400 font-light text-lg max-w-2xl mx-auto mb-10">
                     Explora nuestra selección completa de optimizadores cognitivos, esclerocios premium y kits de crecimiento autónomo.
                 </p>
+
+                <!-- Filtros de Catálogo -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-between gap-4 border-y border-white/10 py-6">
+                    <div class="flex flex-wrap items-center justify-center gap-3">
+                        <span class="text-xs uppercase tracking-widest text-gray-500 font-bold mr-2 hidden md:block">Filtrar:</span>
+                        <button class="bg-gold text-bg-dark font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:bg-white transition-colors">Todos</button>
+                        <button class="border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors">Microdosis</button>
+                        <button class="border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors">Trufas</button>
+                        <button class="border border-white/20 text-white font-bold px-5 py-2 rounded-full uppercase tracking-widest text-[10px] sm:text-xs hover:border-gold hover:text-gold transition-colors">Kits</button>
+                    </div>
+                    
+                    <div class="relative min-w-[200px]">
+                        <select class="w-full appearance-none bg-black/20 border border-white/20 text-white text-[10px] sm:text-xs uppercase tracking-widest font-bold rounded-full pl-5 pr-10 py-2.5 focus:outline-none focus:border-gold cursor-pointer transition-colors hover:bg-white/5">
+                            <option value="featured" class="bg-bg-dark text-white">Recomendados</option>
+                            <option value="price-asc" class="bg-bg-dark text-white">Precio: Menor a Mayor</option>
+                            <option value="price-desc" class="bg-bg-dark text-white">Precio: Mayor a Menor</option>
+                            <option value="potency" class="bg-bg-dark text-white">Potencia</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-white pointer-events-none text-[16px]">expand_more</span>
+                    </div>
+                </div>
             </div>
 
             {categories.map((category) => (

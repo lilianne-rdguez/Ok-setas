@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 interface Props {
     product: {
         title: string;
@@ -17,7 +18,7 @@ const imageBg = product.imageBg || "bg-white";
 ---
 
 <div
-    class="bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col group relative"
+    class="bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 flex flex-col group relative"
 >
     {
         product.badge && (
@@ -26,11 +27,13 @@ const imageBg = product.imageBg || "bg-white";
             </div>
         )
     }
-    <div class={`aspect-square relative overflow-hidden ${imageBg}`}>
-        <img
+    <div class={`relative overflow-hidden ${imageBg}`}>
+        <Image
             alt={product.title}
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             src={product.image}
+            width={500}
+            height={500}
+            class="w-full h-full aspect-square object-cover rounded-xl transition-transform duration-500 group-hover:scale-110"
         />
     </div>
     <div class="p-6 flex flex-col flex-grow">
@@ -39,35 +42,50 @@ const imageBg = product.imageBg || "bg-white";
         >
             {product.category}
         </p>
-        <h4
-            class="font-display text-lg font-bold text-secondary dark:text-white mb-4 line-clamp-2 tracking-tighter"
+        <h3
+            class="font-display text-lg font-bold text-secondary dark:text-white mb-2 line-clamp-2 tracking-tighter"
         >
             {product.title}
-        </h4>
+        </h3>
+        <!-- Star Rating -->
+        <div class="flex items-center gap-0.5 mb-4 text-gold">
+            <span class="material-symbols-outlined text-[14px]">star</span>
+            <span class="material-symbols-outlined text-[14px]">star</span>
+            <span class="material-symbols-outlined text-[14px]">star</span>
+            <span class="material-symbols-outlined text-[14px]">star</span>
+            <span class="material-symbols-outlined text-[14px]">star</span>
+            <span class="text-[10px] text-gray-500 dark:text-gray-400 ml-1"
+                >(5.0)</span
+            >
+        </div>
         <div class="mt-auto">
-            <div class="flex items-center justify-between mb-4">
+            <div
+                class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 mb-4"
+            >
                 <span
                     class="font-mono text-xl font-bold text-gray-900 dark:text-white tracking-tighter"
                 >
                     {product.price}
                 </span>
-                <a
-                    href={product.url}
-                    class="font-mono border-2 border-secondary text-secondary dark:border-gold dark:text-gold hover:bg-secondary hover:text-white dark:hover:bg-gold dark:hover:text-secondary px-3 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-1"
-                >
-                    <span class="material-symbols-outlined text-[14px]"
-                        >visibility</span
+                <div class="flex items-center gap-2 w-full xl:w-auto">
+                    <a
+                        href={product.url}
+                        class="flex-1 xl:flex-none font-mono border-2 border-secondary text-secondary dark:border-gold dark:text-gold hover:bg-secondary hover:text-white dark:hover:bg-gold dark:hover:text-secondary px-3 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-1"
                     >
-                </a>
-                <button
-                    class="product-card-add-btn font-mono bg-[#A03D45] text-white hover:bg-red-800 px-4 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-1"
-                    data-product={JSON.stringify(product)}
-                >
-                    <span class="material-symbols-outlined text-[14px]"
-                        >shopping_cart</span
+                        <span class="material-symbols-outlined text-[14px]"
+                            >visibility</span
+                        >
+                    </a>
+                    <button
+                        class="flex-1 xl:flex-none product-card-add-btn font-mono bg-[#A03D45] text-white hover:bg-red-800 px-4 py-2 rounded-lg font-bold transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-1 w-full"
+                        data-product={JSON.stringify(product)}
                     >
-                    Añadir
-                </button>
+                        <span class="material-symbols-outlined text-[14px]"
+                            >shopping_cart</span
+                        >
+                        Añadir
+                    </button>
+                </div>
             </div>
             <!-- Trust Icons -->
             <div
@@ -75,11 +93,20 @@ const imageBg = product.imageBg || "bg-white";
             >
                 <div class="flex items-center gap-1">
                     <span class="material-symbols-outlined text-[14px]"
+                        >local_shipping</span
+                    >
+                    <span
+                        class="text-[9px] font-bold uppercase tracking-tighter"
+                        >Envío 24h</span
+                    >
+                </div>
+                <div class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]"
                         >visibility_off</span
                     >
                     <span
                         class="text-[9px] font-bold uppercase tracking-tighter"
-                        >Discreto</span
+                        >Paquete Discreto</span
                     >
                 </div>
                 <div class="flex items-center gap-1">
@@ -88,16 +115,7 @@ const imageBg = product.imageBg || "bg-white";
                     >
                     <span
                         class="text-[9px] font-bold uppercase tracking-tighter"
-                        >Seguro</span
-                    >
-                </div>
-                <div class="flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[14px]"
-                        >science</span
-                    >
-                    <span
-                        class="text-[9px] font-bold uppercase tracking-tighter"
-                        >Lab</span
+                        >Pago Seguro</span
                     >
                 </div>
             </div>

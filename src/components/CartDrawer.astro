@@ -21,17 +21,35 @@
 
     <!-- Footer -->
     <div class="border-t border-white/10 p-6 bg-white/5">
+        <!-- Transparencia de Envío -->
+        <div class="flex items-center gap-2 text-[10px] sm:text-xs text-gray-400 font-bold uppercase tracking-widest mb-4 border-b border-white/10 pb-4">
+            <span class="material-symbols-outlined text-[16px] text-green-400">local_shipping</span>
+            Envío gratis desde 50€ (24/48h)
+        </div>
+
         <div class="flex justify-between items-center mb-6">
             <span class="text-gray-400 uppercase tracking-widest text-sm font-bold">Total estimado</span>
             <span id="cart-total" class="font-mono text-2xl font-bold text-white">0,00 €</span>
         </div>
-        <a href="https://ximoe124.sg-host.com/checkout/" id="checkout-btn" class="w-full bg-[#A03D45] text-white font-bold py-4 rounded-xl hover:bg-red-800 transition-all duration-300 uppercase tracking-widest shadow-[0_4px_20px_rgba(160,61,69,0.3)] flex items-center justify-center gap-2 cursor-pointer">
-            <span class="material-symbols-outlined">lock</span>
-            Finalizar Compra
-        </a>
-        <p class="text-center text-xs text-gray-500 mt-4 font-light">
-            Impuestos y propinas de envío en la pantalla de pago.
-        </p>
+        
+        <div class="flex flex-col gap-3">
+            <a href="https://ximoe124.sg-host.com/checkout/" id="checkout-btn" class="w-full bg-[#A03D45] text-white font-bold py-4 rounded-xl hover:bg-red-800 transition-all duration-300 uppercase tracking-widest shadow-[0_4px_20px_rgba(160,61,69,0.3)] flex items-center justify-center gap-2 cursor-pointer">
+                <span class="material-symbols-outlined">lock</span>
+                Pago Seguro
+            </a>
+            
+            <a href="https://ximoe124.sg-host.com/checkout/?guest=true" class="w-full bg-transparent border border-white/20 text-white font-bold py-3 rounded-xl hover:border-gold hover:text-gold transition-all duration-300 uppercase tracking-widest text-xs flex items-center justify-center gap-2 cursor-pointer">
+                <span class="material-symbols-outlined text-[16px]">account_circle</span>
+                Compra Rápida (Invitado)
+            </a>
+        </div>
+
+        <!-- Sellos de Seguridad -->
+        <div class="flex items-center justify-center gap-4 mt-5 opacity-60">
+            <span class="font-bold text-xl tracking-tighter cursor-default title-style text-white">stripe</span>
+            <span class="font-bold text-xl tracking-tighter italic cursor-default text-blue-400">PayPal</span>
+            <span class="material-symbols-outlined text-3xl text-gray-300">credit_card</span>
+        </div>
     </div>
 </aside>
 
