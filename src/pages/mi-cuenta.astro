@@ -1,13 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Mi Cuenta | GrowTrades">
     <Header />
 
     <main
-        class="min-h-screen bg-bg-dark text-white pt-24 pb-24 border-t border-white/5 relative overflow-hidden"
+        class="min-h-screen bg-background-dark text-white pt-24 pb-24 border-t border-white/5 relative overflow-hidden"
     >
         <!-- Fondos decorativos -->
         <div
@@ -109,7 +110,7 @@ import Header from "../components/Header.astro";
 
                         <button
                             type="submit"
-                            class="w-full bg-[#A03D45] text-white font-bold py-4 rounded-xl hover:bg-red-800 transition-all duration-300 uppercase tracking-widest shadow-[0_4px_20px_rgba(160,61,69,0.3)] mt-8"
+                            class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-orange-700 transition-all duration-300 uppercase tracking-widest shadow-[0_4px_20px_rgba(194,120,69,0.3)] mt-8"
                         >
                             Acceder
                         </button>
@@ -190,6 +191,8 @@ import Header from "../components/Header.astro";
             </div>
         </div>
     </main>
+
+    <Footer />
 </Layout>
 
 <style>

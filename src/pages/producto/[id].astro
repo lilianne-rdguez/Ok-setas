@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
 
 export function getStaticPaths() {
     const products = [
@@ -204,7 +205,7 @@ const {
 <Layout title={`${title} | GrowTrades`}>
     <Header />
     <main
-        class="min-h-screen bg-bg-dark text-white pt-32 pb-24 border-t border-white/5"
+        class="min-h-screen bg-background-dark text-white pt-32 pb-24 border-t border-white/5"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
@@ -257,42 +258,10 @@ const {
 
                     <!-- Título -->
                     <h1
-                        class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight leading-tight"
+                        class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 tracking-tight leading-tight"
                     >
                         {title}
                     </h1>
-
-                    <!-- Reseñas / Social Proof -->
-                    <div
-                        class="flex items-center gap-3 mb-6 cursor-pointer group"
-                        onclick="document.getElementById('tab-valoraciones')?.click(); document.getElementById('tab-valoraciones')?.scrollIntoView({behavior: 'smooth'})"
-                    >
-                        <div class="flex items-center gap-0.5 text-gold">
-                            <span class="material-symbols-outlined text-[18px]"
-                                >star</span
-                            >
-                            <span class="material-symbols-outlined text-[18px]"
-                                >star</span
-                            >
-                            <span class="material-symbols-outlined text-[18px]"
-                                >star</span
-                            >
-                            <span class="material-symbols-outlined text-[18px]"
-                                >star</span
-                            >
-                            <span class="material-symbols-outlined text-[18px]"
-                                >star_half</span
-                            >
-                        </div>
-                        <span
-                            class="text-xs font-bold text-white uppercase tracking-widest pt-1"
-                            >(4.8) Basado en 14 reseñas</span
-                        >
-                        <span
-                            class="text-[10px] font-bold text-gray-400 underline group-hover:text-gold transition-colors pt-1"
-                            >Ver todas</span
-                        >
-                    </div>
 
                     <!-- Precio y Añadir al Carrito -->
                     <div
@@ -304,12 +273,10 @@ const {
                             {price}
                         </p>
 
-                        <div
-                            class="flex flex-col xl:flex-row flex-1 w-full gap-4 relative z-10"
-                        >
+                        <div class="flex flex-1 w-full gap-4 relative z-10">
                             <!-- Input cantidad -->
                             <div
-                                class="flex border border-white/20 rounded-xl overflow-hidden h-14 w-full xl:w-40 bg-white/5 backdrop-blur-sm"
+                                class="flex border border-white/20 rounded-xl overflow-hidden h-14 w-40 bg-white/5 backdrop-blur-sm"
                             >
                                 <button
                                     id="btn-minus"
@@ -338,13 +305,13 @@ const {
                                     price,
                                     image,
                                 })}
-                                class="flex-1 bg-[#A03D45] text-white font-bold h-14 rounded-xl hover:bg-red-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(160,61,69,0.3)] hover:shadow-[0_4px_30px_rgba(160,61,69,0.6)] uppercase tracking-widest text-[10px] sm:text-xs relative overflow-hidden group px-4 w-full"
+                                class="flex-1 bg-primary text-white font-bold h-14 rounded-xl hover:bg-orange-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(194,120,69,0.3)] hover:shadow-[0_4px_30px_rgba(194,120,69,0.6)] uppercase tracking-widest text-sm relative overflow-hidden group"
                             >
                                 <span
-                                    class="relative z-10 flex items-center justify-center gap-4 sm:gap-6"
+                                    class="relative z-10 flex items-center gap-2"
                                 >
                                     <span
-                                        class="material-symbols-outlined xl:text-[22px] text-lg"
+                                        class="material-symbols-outlined text-lg"
                                         >local_mall</span
                                     > Añadir al carrito
                                 </span>
@@ -354,30 +321,6 @@ const {
                                 >
                                 </div>
                             </button>
-                        </div>
-                    </div>
-
-                    <!-- Pago Seguro -->
-                    <div
-                        class="flex items-center gap-4 mb-8 py-3 px-5 bg-white/5 border border-white/10 rounded-xl relative -mt-4 shadow-inner"
-                    >
-                        <span
-                            class="material-symbols-outlined text-green-400 text-lg"
-                            >verified_user</span
-                        >
-                        <span
-                            class="text-[10px] font-bold uppercase tracking-widest text-gray-300"
-                            >Pago Seguro:</span
-                        >
-                        <div class="flex items-center gap-3 ml-auto opacity-80">
-                            <span
-                                class="font-bold text-sm tracking-tighter cursor-default title-style text-white"
-                                >stripe</span
-                            >
-                            <span
-                                class="font-bold text-[13px] tracking-tighter italic cursor-default text-blue-400"
-                                >PayPal</span
-                            >
                         </div>
                     </div>
 
@@ -409,37 +352,35 @@ const {
                 {
                     shortDescription && (
                         <div class="mb-16 space-y-4 bg-white/5 border border-white/10 p-8 rounded-[2rem] shadow-xl">
-                            {shortDescription.map(
-                                (item: string, index: number) => {
-                                    if (item === "Más" || item === "Aviso:") {
-                                        return (
-                                            <h3 class="font-bold text-xl text-white font-display uppercase tracking-wider mb-2">
-                                                {item}
-                                            </h3>
-                                        );
-                                    }
-                                    if (item.startsWith("Ingredientes:")) {
-                                        return (
-                                            <div class="mt-8 pt-8 border-t border-white/10">
-                                                <h3 class="font-bold text-lg text-white font-display uppercase tracking-wider mb-2">
-                                                    Ingredientes
-                                                </h3>
-                                                <p class="text-gray-400 font-light text-base">
-                                                    {item.replace(
-                                                        "Ingredientes: ",
-                                                        ""
-                                                    )}
-                                                </p>
-                                            </div>
-                                        );
-                                    }
+                            {shortDescription.map((item, index) => {
+                                if (item === "Más" || item === "Aviso:") {
                                     return (
-                                        <p class="text-gray-400 font-light text-[15px] leading-relaxed">
+                                        <h3 class="font-bold text-xl text-white font-display uppercase tracking-wider mb-2">
                                             {item}
-                                        </p>
+                                        </h3>
                                     );
                                 }
-                            )}
+                                if (item.startsWith("Ingredientes:")) {
+                                    return (
+                                        <div class="mt-8 pt-8 border-t border-white/10">
+                                            <h3 class="font-bold text-lg text-white font-display uppercase tracking-wider mb-2">
+                                                Ingredientes
+                                            </h3>
+                                            <p class="text-gray-400 font-light text-base">
+                                                {item.replace(
+                                                    "Ingredientes: ",
+                                                    ""
+                                                )}
+                                            </p>
+                                        </div>
+                                    );
+                                }
+                                return (
+                                    <p class="text-gray-400 font-light text-[15px] leading-relaxed">
+                                        {item}
+                                    </p>
+                                );
+                            })}
                         </div>
                     )
                 }
@@ -470,29 +411,17 @@ const {
                     class="space-y-6 text-gray-300 font-light leading-relaxed block animate-fade-in-up"
                 >
                     {
-                        description.map((paragraph: string, index: number) => {
-                            const isNotice =
-                                index === description.length - 1 ||
-                                paragraph.startsWith("TODOS NUESTROS");
-                            if (paragraph.startsWith("-")) {
-                                return (
-                                    <ul class="list-disc pl-6 space-y-2 text-lg lg:text-xl text-gray-300 marker:text-gold">
-                                        <li>{paragraph.substring(1)}</li>
-                                    </ul>
-                                );
-                            }
-                            return (
-                                <p
-                                    class={
-                                        isNotice
-                                            ? "text-gray-500 text-xs mt-12 uppercase tracking-widest font-bold pt-8 border-t border-white/5"
-                                            : "text-lg lg:text-xl leading-relaxed text-gray-300 mb-4"
-                                    }
-                                >
-                                    {paragraph}
-                                </p>
-                            );
-                        })
+                        description.map((paragraph, index) => (
+                            <p
+                                class={
+                                    index === description.length - 1
+                                        ? "text-gray-500 text-xs mt-12 uppercase tracking-widest font-normal pt-8 border-t border-white/5"
+                                        : "text-lg lg:text-xl leading-relaxed text-gray-300"
+                                }
+                            >
+                                {paragraph}
+                            </p>
+                        ))
                     }
                 </div>
 
@@ -521,8 +450,8 @@ const {
                             Sé el primero en compartir tu experiencia.
                         </p>
                         <a
-                            href="/mi-cuenta"
-                            class="inline-flex items-center gap-3 bg-[#A03D45] text-white font-bold py-4 px-8 rounded-xl hover:bg-red-800 transition-all duration-300 uppercase tracking-widest text-sm shadow-[0_4px_20px_rgba(160,61,69,0.3)] hover:shadow-[0_4px_30px_rgba(160,61,69,0.6)]"
+                            href="https://ximoe124.sg-host.com/mi-cuenta/"
+                            class="inline-flex items-center gap-3 bg-primary text-white font-bold py-4 px-8 rounded-xl hover:bg-orange-700 transition-all duration-300 uppercase tracking-widest text-sm shadow-[0_4px_20px_rgba(194,120,69,0.3)] hover:shadow-[0_4px_30px_rgba(194,120,69,0.6)]"
                         >
                             <span class="material-symbols-outlined text-xl">
                                 login
@@ -550,7 +479,7 @@ const {
                 >
                     <!-- Dummy items simulando productos relacionados para rellenar visualmente -->
                     {
-                        related.map((rel: any) => (
+                        related.map((rel) => (
                             <a
                                 href={rel.url}
                                 class="bg-white/5 rounded-[2rem] border border-white/5 p-8 flex flex-col items-center group cursor-pointer hover:border-gold/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
@@ -578,6 +507,8 @@ const {
         </div>
     </main>
 
+    <Footer />
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Lógica de Cantidad +/-
@@ -585,7 +516,7 @@ const {
             const btnPlus = document.getElementById("btn-plus");
             const qtyInput = document.getElementById(
                 "qty-input"
-            ) as HTMLInputElement | null;
+            ) as HTMLInputElement;
 
             if (btnMinus && btnPlus && qtyInput) {
                 btnMinus.addEventListener("click", () => {
@@ -610,24 +541,17 @@ const {
 
             // Integración Carrito
             const btnAddToCart = document.getElementById("btn-add-to-cart");
-            if (btnAddToCart) {
+            if (btnAddToCart && (window as any).addToCartGlobal) {
                 btnAddToCart.addEventListener("click", () => {
                     const productData = JSON.parse(
-                        btnAddToCart.dataset.product || "{}"
+                        btnAddToCart.dataset.product
                     );
                     const quantity =
                         parseInt(qtyInput ? qtyInput.value : "1") || 1;
-
-                    if ((window as any).addToCartGlobal) {
-                        (window as any).addToCartGlobal({
-                            ...productData,
-                            quantity,
-                        });
-                    } else {
-                        console.error("Cart not ready");
-                        if ((window as any).openCart)
-                            (window as any).openCart();
-                    }
+                    (window as any).addToCartGlobal({
+                        ...productData,
+                        quantity,
+                    });
                 });
             }
 
