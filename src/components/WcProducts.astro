@@ -1,0 +1,244 @@
+---
+const { eyebrow = "CATÁLOGO OFICIAL", headline = "CONECTA CON LA RAÍZ", products = [] } = Astro.props;
+---
+
+<section class="gt-wc-products-block">
+    <div class="gt-wc-container">
+        
+        <div class="gt-wc-header">
+            <span class="gt-wc-eyebrow">{eyebrow}</span>
+            <h2 class="gt-wc-title" set:html={headline}></h2>
+        </div>
+
+        <div class="gt-wc-grid">
+            {products.length > 0 ? (
+                products.map((product) => (
+                    <div class="gt-wc-card">
+                        <div class="gt-wc-image-wrap">
+                            {product.image ? (
+                                <img src={product.image} alt={product.title} />
+                            ) : (
+                                <div class="gt-wc-placeholder">
+                                    <span class="material-symbols-outlined">psychiatry</span>
+                                </div>
+                            )}
+                        </div>
+
+                        <div class="gt-wc-info">
+                            <div class="gt-wc-cat">
+                                <a href="#">{product.category}</a>
+                            </div>
+                            <h3 class="gt-wc-product-title">{product.title}</h3>
+                            <div class="gt-wc-price" set:html={product.priceHtml}></div>
+                            
+                            <div class="gt-wc-action">
+                                <a href="#" class="gt-wc-btn-add_to_cart">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                    <span>Agregar al carrito</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            ) : (
+                <div class="gt-wc-card" style="grid-column: 1 / -1; text-align: center;">
+                    <p>No se encontraron productos. Crea algunos en WooCommerce para verlos aquí o activa WooCommerce.</p>
+                </div>
+            )}
+        </div>
+    </div>
+</section>
+
+<style>
+.gt-wc-products-block {
+    background-color: var(--gt-color-bg);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.gt-wc-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.gt-wc-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.gt-wc-eyebrow {
+    color: var(--gt-color-gold);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.gt-wc-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--gt-color-white);
+}
+
+.gt-wc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .gt-wc-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .gt-wc-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.gt-wc-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--gt-radius-md);
+    padding: 1.5rem;
+    position: relative;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.gt-wc-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 168, 67, 0.3);
+}
+
+.gt-wc-image-wrap {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: var(--gt-radius-sm);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gt-wc-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gt-wc-card:hover .gt-wc-image-wrap img {
+    transform: scale(1.05);
+}
+
+.gt-wc-placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.gt-wc-placeholder span.material-symbols-outlined {
+    font-size: 4rem !important;
+}
+
+.gt-wc-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.gt-wc-cat {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+.gt-wc-cat a {
+    color: inherit;
+    text-decoration: none;
+}
+.gt-wc-cat a:hover {
+    color: var(--gt-color-gold);
+}
+
+.gt-wc-product-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    color: var(--gt-color-white);
+    font-family: var(--gt-font-body);
+    font-weight: 600;
+}
+
+.gt-wc-price {
+    font-size: 1.125rem;
+    color: var(--gt-color-gold);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-family: var(--gt-font-mono);
+}
+
+.gt-wc-price del {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 400;
+    margin-right: 0.5rem;
+}
+
+.gt-wc-action {
+    margin-top: auto;
+}
+
+.gt-wc-btn-add_to_cart {
+    background-color: transparent;
+    color: var(--gt-color-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border-radius: var(--gt-radius-full);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gt-wc-btn-add_to_cart:hover {
+    background-color: var(--gt-color-gold);
+    border-color: var(--gt-color-gold);
+    color: #000;
+}
+
+/* AJAX WooCommerce states representation */
+.gt-wc-btn-add_to_cart.added {
+    background-color: var(--gt-color-cyan);
+    border-color: var(--gt-color-cyan);
+    color: #000;
+}
+
+.gt-wc-btn-add_to_cart.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+</style>
