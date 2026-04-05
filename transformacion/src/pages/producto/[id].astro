@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
 
 export function getStaticPaths() {
     const products = [
@@ -204,7 +205,7 @@ const {
 <Layout title={`${title} | GrowTrades`}>
     <Header />
     <main
-        class="min-h-screen bg-bg-dark text-white pt-32 pb-24 border-t border-white/5"
+        class="min-h-screen bg-background-dark text-white pt-32 pb-24 border-t border-white/5"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-16 lg:gap-24">
@@ -304,7 +305,7 @@ const {
                                     price,
                                     image,
                                 })}
-                                class="flex-1 bg-[#A03D45] text-white font-bold h-14 rounded-xl hover:bg-red-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(160,61,69,0.3)] hover:shadow-[0_4px_30px_rgba(160,61,69,0.6)] uppercase tracking-widest text-sm relative overflow-hidden group"
+                                class="flex-1 bg-primary text-white font-bold h-14 rounded-xl hover:bg-orange-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(194,120,69,0.3)] hover:shadow-[0_4px_30px_rgba(194,120,69,0.6)] uppercase tracking-widest text-sm relative overflow-hidden group"
                             >
                                 <span
                                     class="relative z-10 flex items-center gap-2"
@@ -450,7 +451,7 @@ const {
                         </p>
                         <a
                             href="https://ximoe124.sg-host.com/mi-cuenta/"
-                            class="inline-flex items-center gap-3 bg-[#A03D45] text-white font-bold py-4 px-8 rounded-xl hover:bg-red-800 transition-all duration-300 uppercase tracking-widest text-sm shadow-[0_4px_20px_rgba(160,61,69,0.3)] hover:shadow-[0_4px_30px_rgba(160,61,69,0.6)]"
+                            class="inline-flex items-center gap-3 bg-primary text-white font-bold py-4 px-8 rounded-xl hover:bg-orange-700 transition-all duration-300 uppercase tracking-widest text-sm shadow-[0_4px_20px_rgba(194,120,69,0.3)] hover:shadow-[0_4px_30px_rgba(194,120,69,0.6)]"
                         >
                             <span class="material-symbols-outlined text-xl">
                                 login
@@ -506,30 +507,34 @@ const {
         </div>
     </main>
 
+    <Footer />
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Lógica de Cantidad +/-
             const btnMinus = document.getElementById("btn-minus");
             const btnPlus = document.getElementById("btn-plus");
-            const qtyInput = document.getElementById("qty-input");
+            const qtyInput = document.getElementById(
+                "qty-input"
+            ) as HTMLInputElement;
 
             if (btnMinus && btnPlus && qtyInput) {
                 btnMinus.addEventListener("click", () => {
                     let currentValue = parseInt(qtyInput.value) || 1;
                     if (currentValue > 1) {
-                        qtyInput.value = currentValue - 1;
+                        qtyInput.value = (currentValue - 1).toString();
                     }
                 });
 
                 btnPlus.addEventListener("click", () => {
                     let currentValue = parseInt(qtyInput.value) || 0;
-                    qtyInput.value = currentValue + 1;
+                    qtyInput.value = (currentValue + 1).toString();
                 });
 
                 qtyInput.addEventListener("change", () => {
                     let currentValue = parseInt(qtyInput.value);
                     if (isNaN(currentValue) || currentValue < 1) {
-                        qtyInput.value = 1;
+                        qtyInput.value = "1";
                     }
                 });
             }

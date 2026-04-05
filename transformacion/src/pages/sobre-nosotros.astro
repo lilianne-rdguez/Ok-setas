@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 // Datos estáticos del equipo para facilitar su modificación.
 // Sustituye las rutas en 'image' cuando tengas las fotos reales en la carpeta public.
@@ -55,7 +56,9 @@ const team = {
 <Layout title="Sobre Nosotros | GrowTrades">
   <Header />
 
-  <main class="min-h-screen bg-bg-dark text-white overflow-hidden relative">
+  <main
+    class="min-h-screen bg-background-dark text-white overflow-hidden relative"
+  >
     <!-- Decoración de fondo dinámica -->
     <div
       class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-gold/10 to-transparent pointer-events-none z-0"
@@ -210,6 +213,8 @@ const team = {
       </section>
     </div>
   </main>
+
+  <Footer />
 
   <style>
     /* Animación utilitaria para fadeInUp */
